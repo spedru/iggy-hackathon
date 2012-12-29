@@ -67,6 +67,12 @@ public class Level {
             Logger.getLogger(Level.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
+    public double width(){
+        return walls.length*size;
+    }
+    public double height(){
+        return walls[0].length*size;
+    }
     public boolean collide(Rect rect){
         int x=(int)Math.floor(rect.UpperLeftCorner().getX()/size);
         int y=(int)Math.floor(rect.UpperLeftCorner().getY()/size);

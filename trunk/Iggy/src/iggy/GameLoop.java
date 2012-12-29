@@ -17,6 +17,7 @@ import objects.GameObject;
 import objects.Player;
 import particlefx.ParticleManager;
 import world.Level;
+import world.StarBG;
 
 /**
  *
@@ -25,6 +26,7 @@ import world.Level;
 public class GameLoop extends Game{
     Level level;
     Player player;
+    StarBG background1;
     ParticleManager shells;
     ParticleManager blood;
     LinkedList<GameObject>objects;
@@ -35,6 +37,7 @@ public class GameLoop extends Game{
         blood=new ParticleManager(1000,400,0.2,0,0,Color.RED);
         objects=new LinkedList<GameObject>();
         level=new Level("Levels/Level_Wasteland.txt",player,objects);
+        background1=new StarBG();
         this.setBackground(new Color(10,20,30));
     }
 
@@ -95,6 +98,7 @@ public class GameLoop extends Game{
         }
         shells.draw(batch);
         blood.draw(batch);
+        background1.draw(batch, level, viewScreen);
     }
 
     @Override
