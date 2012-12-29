@@ -30,7 +30,7 @@ public class Animation{
         }
         else {
             for (int i = 0; i < Frames; i++) {
-                frames[i] = new Image2D("Sprites/"+Name+i+"."+Type);
+                frames[i] = new Image2D("Sprites/"+Name+(i+1)+"."+Type);
             }
             index = 0;
             speed = 1;

@@ -19,9 +19,11 @@ public class Player extends GameObject{
     int jumps;
     boolean canJump;
     Animation gun;
+    Animation head;
     public Player(Vector2 pos){
-        super(new Animation("head",1,"png"),pos);
-        gun=new Animation("shotgun_temp",1,"png");
+        super(new Animation("head",2,"png"),pos);
+        gun=new Animation("shotgun_temp",2,"png");
+        head=new Animation("head",2,"png");
     }
     @Override
     public void create() {
@@ -78,6 +80,16 @@ public class Player extends GameObject{
         m.subtract(position);
         double dir=Math.atan2(m.getY(),m.getX());
         gun.rotate(dir);
+        dir=Math.atan2(m.getY()+16,m.getX());
+        head.rotate(dir);
+        if(m.getX()>0){
+            gun.index=0;
+            head.index=0;
+        }
+        else{
+            gun.index=1;
+            head.index=1;
+        }
     }
     public void move(boolean left,boolean right){
         if(left&&!right){
@@ -95,7 +107,10 @@ public class Player extends GameObject{
     }
     @Override
     public void draw(ImageCollection batch){
-        gun.draw(batch, position, depth);
+        gun.draw(batch, position, 120);
+        position.dY(-16);
+        head.draw(batch, position, 110);
+        position.dY(16);
     }
 
 }
