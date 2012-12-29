@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import objects.GameObject;
 import objects.Player;
 import objects.Zombie;
+import objects.Zombie2;
 
 /**
  *
@@ -41,6 +42,7 @@ public class Level {
             walls = new int[i][j];
             i = 0;
             j = 0;
+            int last=0;
             reader = new Scanner(new File(level));
             while (reader.hasNextLine()) {
                 line = reader.nextLine();
@@ -51,21 +53,29 @@ public class Level {
                             break;
                         case '@':
                             player.position=new Vector2(i*size+size/2,j*size+size/2);
-                            walls[i][j] = 0;       
+                            walls[i][j] = last;       
                             break;
                         case '1':
                             objects.add(new Zombie(new Vector2(i*size+size/2,j*size+size/2)));
-                            walls[i][j] = 0;
+                            walls[i][j] = last;
+                            break;
+                        case '2':
+                            objects.add(new Zombie2(new Vector2(i*size+size/2,j*size+size/2)));
+                            walls[i][j] = last;
+                            System.out.println("Zombie2");
                             break;
                         case ' ':
                             walls[i][j] = 0;
+                            last=0;
                             break;
                         case '-':
                             walls[i][j] = -1;
+                            last=-1;
                             break;
                     }
                 }
                 j++;
+                last=0;
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Level.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -114,19 +124,29 @@ public class Level {
     }
 
     public void draw(ImageCollection batch, ViewScreen viewscreen,Dimension d){
-        for(int i=0; i<walls.length; i++){
-            for(int j=0; j<walls[0].length; j++){
+        int x=(int) -Math.floor((double)viewscreen.GetX()/64);
+        int y=(int) -Math.floor((double)viewscreen.GetY()/64);
+        int w=(int) Math.ceil((double)d.width/64);
+        int h=(int) Math.ceil((double)d.height/64);
+        for(int i=x-2; i<x+w; i++){
+            for(int j=y-2; j<y+h; j++){
+                try{
                 if(walls[i][j]==1){
                     if(i==0){;
                         drawCube(batch,-1000,j*size,1000+size,size,viewscreen,d);
                     }
                     if(i==walls.length-1){
                         drawCube(batch,i*size,j*size,1000,size,viewscreen,d);
+                        break;
                     }
                     drawCube(batch,i*size,j*size,size,size,viewscreen,d);
                 }
                 if(walls[i][j]==-1){
                     drawBack(batch,i*size,j*size,size,size,viewscreen,d);
+                }
+                }
+                catch(Exception e){
+                    
                 }
             }
         }

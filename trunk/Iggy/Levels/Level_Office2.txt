@@ -4,7 +4,7 @@
                    x
          - -       x
     xxxxxxxxxx---xxxxxxx
-    x- -- -- -- -- -- -x
+    x- -- -- -- x- -- -x
     x-1-- -- --1--1-- -xx
     xxxx---xxxxxxxxxxxxxxx
     x-1-x1-- -- -- -- -- 
@@ -17,5 +17,5 @@
     xxx--1--1-xx--1-- --x
     xxxxxxxxxxxxxxx--xxxxx
     -- -- -- -- -- -x -x
- @  -- -- --1-- -- x-1-x
+ @  -- -- --1-- -- x-1-x   x
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
