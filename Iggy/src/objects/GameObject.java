@@ -10,6 +10,7 @@ import Utilities.ImageCollection;
 import Utilities.Rect;
 import Utilities.Vector2;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.ListIterator;
 import world.Level;
 
@@ -31,15 +32,15 @@ public abstract class GameObject {
         create();
     }
     public abstract void create();
-    public void update(Level level, Player player, ArrayList<GameObject> objects){
+    public void update(Level level, Player player, LinkedList<GameObject> objects){
         position.add(velocity);
         if(sprite!=null)sprite.update();
         updateBoundingBox();
         step(level,player,objects);
     }
-    public abstract void step(Level level, Player player, ArrayList<GameObject> objects);
+    public abstract void step(Level level, Player player, LinkedList<GameObject> objects);
 
-    public GameObject collide(ArrayList<GameObject> objects){
+    public GameObject collide(LinkedList<GameObject> objects){
         ListIterator l=objects.listIterator();
         while(l.hasNext()){
             GameObject g=(GameObject)l.next();

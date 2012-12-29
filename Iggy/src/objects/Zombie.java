@@ -7,6 +7,7 @@ package objects;
 import Utilities.Rect;
 import Utilities.Vector2;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import world.Level;
 
 /**
@@ -26,7 +27,7 @@ public class Zombie extends Enemy{
     }
 
     @Override
-    public void step(Level level, Player player, ArrayList<GameObject> objects) {
+    public void step(Level level, Player player, LinkedList<GameObject> objects) {
         
     }
 
