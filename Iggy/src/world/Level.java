@@ -16,10 +16,7 @@ import java.io.FileNotFoundException;
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.logging.Logger;
-import objects.GameObject;
-import objects.Player;
-import objects.Zombie;
-import objects.Zombie2;
+import objects.*;
 
 /**
  *
@@ -69,6 +66,11 @@ public class Level {
                             objects.add(new Zombie2(new Vector2(i*size+size/2,j*size+size/2)));
                             walls[i][j] = last;
                             System.out.println("Zombie2");
+                            break;
+                        case '3':
+                            objects.add(new FleshZombie(new Vector2(i*size+size/2,j*size+size/2)));
+                            walls[i][j]=last;
+                            System.out.println("FleshZombie");
                             break;
                         case ' ':
                             walls[i][j] = 0;
