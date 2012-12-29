@@ -31,6 +31,12 @@ public class Zombie extends Enemy{
     public void step(Level level, Player player, LinkedList<GameObject> objects) {
         hit(objects);
         attack(player);
+        if(this.position.getX()>player.position.getX()){
+            this.position.dX(-2);
+        }
+        else if(this.position.getX()<player.position.getX()){
+            this.position.dX(2);
+        }
     }
 
     
