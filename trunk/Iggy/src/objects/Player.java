@@ -20,15 +20,18 @@ import world.Level;
 public class Player extends GameObject{
     int jumps;
     int canshoot=0;
+    int firing=2;
     int currentweapon;
     boolean canJump;
     Animation gun;
     Animation head;
+    Animation muzzleflare;
     boolean[] weapons;
     public Player(Vector2 pos){
         super(new Animation("legs",10,"png"),pos);
         gun=new Animation("shotgun_temp",2,"png");
         head=new Animation("head",2,"png");
+        muzzleflare=new Animation("muzzleflare",2,"png");
         currentweapon=3;
         canshoot=0;
         weapons=new boolean[4];
@@ -43,6 +46,7 @@ public class Player extends GameObject{
 
     @Override
     public void step(Level level, Player player, LinkedList<GameObject> objects) {
+        if(firing<5)firing++;
         canshoot=Math.max(0,canshoot-1);
         if(level.collide(boundingBox)){
             position.subtract(velocity);
@@ -98,6 +102,7 @@ public class Player extends GameObject{
         m.subtract(position);
         double dir=Math.atan2(m.getY(),m.getX());
         gun.rotate(dir);
+        if(firing==0)muzzleflare.rotate(dir);
         dir=Math.atan2(m.getY()+16,m.getX());
         head.rotate(dir);
         if(m.getX()>0){
@@ -125,14 +130,19 @@ public class Player extends GameObject{
     }
     @Override
     public void draw(ImageCollection batch){
+        if(firing<2){
+            muzzleflare.index=firing;
+            muzzleflare.draw(batch, position, 120);
+        }
         gun.draw(batch, position, 120);
-        position.dY(-16);
+        position.dY(-12);
         head.draw(batch, position, 110);
-        position.dY(16);
+        position.dY(12);
         sprite.draw(batch, position, depth);
     }
     public void shoot(LinkedList<GameObject> objects,Vector2 mouse,ViewScreen viewscreen,ParticleManager shells){
         if(canshoot==0){
+            firing=0;
             Vector2 m=mouse.clone();
             m.dX(-viewscreen.GetX());
             m.dY(-viewscreen.GetY());
@@ -140,9 +150,10 @@ public class Player extends GameObject{
             double dir=Math.atan2(-m.getY(),m.getX());
             Vector2 pos=position.clone();
             pos.add(new Vector2(Math.cos(dir)*16,-Math.sin(dir)*16));
-
+            pos.dY(-3);
             switch(currentweapon){
                 case FISTS:
+                    firing=10;
                     break;
                 case PISTOL:
                     objects.add(new Bullet(pos,dir+offset()*.1,20));

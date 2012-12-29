@@ -39,8 +39,13 @@ public abstract class Enemy extends GameObject {
             if (o.alive) {
                 if (o instanceof Bullet) {
                     if (o.boundingBox.intersects(boundingBox)) {
-                        health -= ((Bullet) o).damage;
-                        blood.coneExplosion(o.position, 3, o.direction(), 0.5, 10);
+                        if (o.position.getY() < position.getY() - 5) {
+                            health -= 2 * ((Bullet) o).damage;
+                            blood.coneExplosion(o.position, 7, o.direction(), 0.25, 12);
+                        } else {
+                            health -= ((Bullet) o).damage;
+                            blood.coneExplosion(o.position, 3, o.direction(), 0.5, 10);
+                        }
                         o.alive = false;
                         if (health <= 0) {
                             alive = false;

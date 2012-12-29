@@ -27,7 +27,7 @@ public class Bullet extends GameObject{
     }
     @Override
     public void create() {
-        this.damage=10;
+        this.damage=5;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class Bullet extends GameObject{
     public void checkWalls(Level level, ParticleManager shells){
         if(level.collide(this.boundingBox)){
             this.alive=false;
-            shells.addExplosion(position, 5, velocity.length()/2);
+            shells.addExplosion(position, 5, velocity.length()/4);
         }
     }
     @Override

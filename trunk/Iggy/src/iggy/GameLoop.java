@@ -35,7 +35,7 @@ public class GameLoop extends Game{
         blood=new ParticleManager(1000,400,0.2,0,0,Color.RED);
         objects=new LinkedList<GameObject>();
         level=new Level("Levels/Level_Wasteland.txt",player,objects);
-        
+        this.setBackground(new Color(10,20,30));
     }
 
     @Override
