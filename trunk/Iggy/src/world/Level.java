@@ -54,12 +54,14 @@ public class Level {
                             walls[i][j] = 0;       
                             break;
                         case '1':
-                            objects.add(new Zombie(new Vector2(i*64,j*64)));
-                            System.out.print("zombie");
+                            objects.add(new Zombie(new Vector2(i*size+size/2,j*size+size/2)));
                             walls[i][j] = 0;
                             break;
                         case ' ':
                             walls[i][j] = 0;
+                            break;
+                        case '-':
+                            walls[i][j] = -1;
                             break;
                     }
                 }
@@ -104,7 +106,7 @@ public class Level {
             return 1;
         }
         else {
-            return walls[x][y];
+            return Math.max(walls[x][y],0);
         }
     }
     public Rect cellBounds(int x,int y){
@@ -115,21 +117,16 @@ public class Level {
         for(int i=0; i<walls.length; i++){
             for(int j=0; j<walls[0].length; j++){
                 if(walls[i][j]==1){
-                    //batch.drawRect(cellBounds(i,j), Color.black, 100);
-                    if(i==0){
-                        //batch.fillRect(new Vector2(-1000,j*size),1000+size,size, Color.black, 100);
-                        //batch.fillRect(new Vector2(-1000-10,j*size-10),1000+size,size, Color.DARK_GRAY, 10);
+                    if(i==0){;
                         drawCube(batch,-1000,j*size,1000+size,size,viewscreen,d);
                     }
                     if(i==walls.length-1){
-                        //batch.fillRect(new Vector2(i*size,j*size),1000,size, Color.black, 100);
-                        //batch.fillRect(new Vector2(i*size-10,j*size-10),1000,size, Color.DARK_GRAY, 10);
                         drawCube(batch,i*size,j*size,1000,size,viewscreen,d);
                     }
-                    //batch.fillRect(new Vector2(i*size,j*size),size,size, Color.black, 100);
-                    //batch.fillRect(new Vector2(i*size-10,j*size-10),size,size, Color.DARK_GRAY, 10);
-                    //System.out.println(i +","+j);
                     drawCube(batch,i*size,j*size,size,size,viewscreen,d);
+                }
+                if(walls[i][j]==-1){
+                    drawBack(batch,i*size,j*size,size,size,viewscreen,d);
                 }
             }
         }
@@ -148,9 +145,23 @@ public class Level {
             y1*=depth;
             x1+=-vs.GetX()+d.getWidth()/2+W/2;
             y1+=-vs.GetY()+d.getHeight()/2+H/2;
-            batch.fillRect(new Vector2(x1,y1), (int)(W*depth)+2, (int)(H*depth)+2, c,(int)(-105+200*depth));
+            batch.fillRect(new Vector2(x1,y1), (int)(W*depth)+2, (int)(H*depth)+2, c,(int)(100*depth));
             c=Color.GRAY;
         }
+        
+    }
+    public void drawBack(ImageCollection batch,double X, double Y, double W, double H,ViewScreen vs,Dimension d){
+        double depth=.95;
+        Color c=Color.LIGHT_GRAY;
+        double x1;
+        double y1;
+            x1=X-(-vs.GetX()+d.getWidth()/2+W/2);
+            y1=Y-(-vs.GetY()+d.getHeight()/2+H/2);
+            x1*=depth;
+            y1*=depth;
+            x1+=-vs.GetX()+d.getWidth()/2+W/2;
+            y1+=-vs.GetY()+d.getHeight()/2+H/2;
+            batch.fillRect(new Vector2(x1,y1), (int)(W*depth)+2, (int)(H*depth)+2, c,(int)(100*depth));
         
     }
 }
