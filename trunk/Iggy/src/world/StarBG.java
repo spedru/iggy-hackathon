@@ -8,6 +8,7 @@ import Utilities.Image2D;
 import Utilities.ImageCollection;
 import Utilities.Vector2;
 import Utilities.ViewScreen;
+import java.awt.Color;
 import java.awt.Dimension;
 
 /**
@@ -28,5 +29,6 @@ public class StarBG {
         for(int i=0; i<100; i++){
             stars[i].draw(batch, vs,d);
         }
+        
     }
 }

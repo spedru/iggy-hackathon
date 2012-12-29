@@ -132,6 +132,7 @@ public class Level {
     }
 
     public void draw(ImageCollection batch, ViewScreen viewscreen,Dimension d){
+        batch.fillRect(new Vector2(-viewscreen.GetX(),-viewscreen.GetY()*.9+d.height/2), d.width, d.height/2,side,2);
         int x=(int) -Math.floor((double)viewscreen.GetX()/64);
         int y=(int) -Math.floor((double)viewscreen.GetY()/64);
         int w=(int) Math.ceil((double)d.width/64);
