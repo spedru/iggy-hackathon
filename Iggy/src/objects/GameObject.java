@@ -65,4 +65,9 @@ public abstract class GameObject {
     public void setSprite(Animation Sprite){
         sprite=Sprite;
     }
+    public double distanceToObject(GameObject other){
+        Vector2 v=position.clone();
+        v.subtract(other.position);
+        return v.length();
+    }
 }

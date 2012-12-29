@@ -35,18 +35,19 @@ public class Zombie extends Enemy{
             position.subtract(velocity);
             velocity=new Vector2();
         }
-        if(this.position.getX()>player.position.getX()){
-            this.position.dX(-2);
-            updateBoundingBox();
-            if (level.collide(boundingBox)){
-                this.position.dX(2);
-            }
-        }
-        else if(this.position.getX()<player.position.getX()){
-            this.position.dX(2);
-            updateBoundingBox();
-            if (level.collide(boundingBox)){
+        if (distanceToObject(player) < 450) {
+            if (this.position.getX() > player.position.getX()) {
                 this.position.dX(-2);
+                updateBoundingBox();
+                if (level.collide(boundingBox)) {
+                    this.position.dX(2);
+                }
+            } else if (this.position.getX() < player.position.getX()) {
+                this.position.dX(2);
+                updateBoundingBox();
+                if (level.collide(boundingBox)) {
+                    this.position.dX(-2);
+                }
             }
         }
         position.dY(1);
