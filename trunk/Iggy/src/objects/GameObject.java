@@ -19,6 +19,7 @@ import world.Level;
  * @author Peter
  */
 public abstract class GameObject {
+    public boolean alive;
     public Animation sprite;
     public Vector2 position;
     public Vector2 velocity;
@@ -29,6 +30,7 @@ public abstract class GameObject {
         position=Position.clone();
         velocity=new Vector2();
         depth=10;
+        alive=true;
         create();
     }
     public abstract void create();
