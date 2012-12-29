@@ -9,6 +9,7 @@ import Game.Game;
 import Utilities.Vector2;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import objects.Bullet;
@@ -30,6 +31,7 @@ public class GameLoop extends Game{
     ParticleManager shells;
     ParticleManager blood;
     LinkedList<GameObject>objects;
+    boolean dvorak;
     @Override
     public void InitializeAndLoad() {
         player=new Player(new Vector2());
@@ -39,6 +41,7 @@ public class GameLoop extends Game{
         level=new Level("Levels/Level_Wasteland.txt",player,objects);
         background1=new StarBG();
         this.setBackground(new Color(10,20,30));
+        dvorak=false;
     }
 
     @Override
@@ -63,7 +66,22 @@ public class GameLoop extends Game{
             if(!o.alive)l.remove();
         }
         player.update(level, player, objects);
-        player.move(keyboard.isKeyDown('a'), keyboard.isKeyDown('d'));
+        if(dvorak){
+        player.move(keyboard.isKeyDown('a'), keyboard.isKeyDown('e'));
+        if (keyboard.isKeyDown(KeyEvent.VK_COMMA)) {
+            player.jump();
+        } else {
+            player.resetJump();
+        }
+        if(keyboard.isKeyDown(KeyEvent.VK_PERIOD)){
+            player.switchUp();
+        }
+        else if(keyboard.isKeyDown(KeyEvent.VK_QUOTE)){
+            player.switchDown();
+        }
+        }
+        else{
+            player.move(keyboard.isKeyDown('a'), keyboard.isKeyDown('d'));
         if (keyboard.isKeyDown('w')) {
             player.jump();
         } else {
@@ -74,8 +92,10 @@ public class GameLoop extends Game{
         }
         else if(keyboard.isKeyDown('q')){
             player.switchDown();
+        
         }
         else player.resetSwitch();
+        }
         if(mouse.isPressed(mouse.LEFT_BUTTON)){
             player.shoot(objects, mouse.location(), viewScreen,shells);
         }
@@ -89,7 +109,7 @@ public class GameLoop extends Game{
 
     @Override
     public void Draw(Graphics grphcs) {
-        level.draw(batch);
+        level.draw(batch,viewScreen);
         player.draw(batch);
         ListIterator l=objects.listIterator();
         while(l.hasNext()){

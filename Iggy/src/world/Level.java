@@ -8,6 +8,7 @@ package world;
 import Utilities.ImageCollection;
 import Utilities.Rect;
 import Utilities.Vector2;
+import Utilities.ViewScreen;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -101,28 +102,40 @@ public class Level {
         if(x<0||y<0||x>walls.length-1||y>walls[0].length-1){
             return 1;
         }
-        else return walls[x][y];
+        else {
+            return walls[x][y];
+        }
     }
     public Rect cellBounds(int x,int y){
         return new Rect(x*size,y*size,size,size);
     }
 
-    public void draw(ImageCollection batch){
+    public void draw(ImageCollection batch, ViewScreen viewscreen){
         for(int i=0; i<walls.length; i++){
             for(int j=0; j<walls[0].length; j++){
                 if(walls[i][j]==1){
                     //batch.drawRect(cellBounds(i,j), Color.black, 100);
                     if(i==0){
                         batch.fillRect(new Vector2(-1000,j*size),1000+size,size, Color.black, 100);
+                        batch.fillRect(new Vector2(-1000-10,j*size-10),1000+size,size, Color.DARK_GRAY, 10);
                     }
                     if(i==walls.length-1){
                         batch.fillRect(new Vector2(i*size,j*size),1000,size, Color.black, 100);
+                        batch.fillRect(new Vector2(i*size-10,j*size-10),1000,size, Color.DARK_GRAY, 10);
                     }
                     batch.fillRect(new Vector2(i*size,j*size),size,size, Color.black, 100);
+                    batch.fillRect(new Vector2(i*size-10,j*size-10),size,size, Color.DARK_GRAY, 10);
                     //System.out.println(i +","+j);
                 }
             }
         }
         batch.fillRect(new Vector2(-1000,walls[0].length*size), walls.length*size+2000, 1000, Color.black, 100);
+    }
+    public void drawCube(int X, int Y, int W, int H){
+        double x=(double)X;
+        double y=(double)Y;
+        double w=(double)W;
+        double h=(double)H;
+        
     }
 }
