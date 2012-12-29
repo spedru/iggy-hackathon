@@ -8,6 +8,9 @@ package iggy;
 import Game.Game;
 import Utilities.Vector2;
 import java.awt.Graphics;
+import java.util.LinkedList;
+import java.util.ListIterator;
+import objects.GameObject;
 import objects.Player;
 import world.Level;
 
@@ -18,11 +21,12 @@ import world.Level;
 public class GameLoop extends Game{
     Level level;
     Player player;
+    LinkedList<GameObject>objects;
     @Override
     public void InitializeAndLoad() {
         player=new Player(new Vector2());
         level=new Level("Levels/Level_Wasteland.txt",player);
-        
+        objects=new LinkedList<GameObject>();
     }
 
     @Override
@@ -32,7 +36,13 @@ public class GameLoop extends Game{
 
     @Override
     public void Update() {
-        player.update(level, player, null);
+        ListIterator l=objects.listIterator();
+        while(l.hasNext()){
+            GameObject o=(GameObject)l.next();
+            o.update(level, player, objects);
+            if(!o.alive)l.remove();
+        }
+        player.update(level, player, objects);
         player.move(keyboard.isKeyDown('a'), keyboard.isKeyDown('d'));
         if (keyboard.isKeyDown('w')) {
             player.jump();
