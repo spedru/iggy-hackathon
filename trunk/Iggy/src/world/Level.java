@@ -10,6 +10,7 @@ import Utilities.Rect;
 import Utilities.Vector2;
 import Utilities.ViewScreen;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
@@ -110,7 +111,7 @@ public class Level {
         return new Rect(x*size,y*size,size,size);
     }
 
-    public void draw(ImageCollection batch, ViewScreen viewscreen){
+    public void draw(ImageCollection batch, ViewScreen viewscreen,Dimension d){
         for(int i=0; i<walls.length; i++){
             for(int j=0; j<walls[0].length; j++){
                 if(walls[i][j]==1){
@@ -123,19 +124,30 @@ public class Level {
                         batch.fillRect(new Vector2(i*size,j*size),1000,size, Color.black, 100);
                         batch.fillRect(new Vector2(i*size-10,j*size-10),1000,size, Color.DARK_GRAY, 10);
                     }
-                    batch.fillRect(new Vector2(i*size,j*size),size,size, Color.black, 100);
-                    batch.fillRect(new Vector2(i*size-10,j*size-10),size,size, Color.DARK_GRAY, 10);
+                    //batch.fillRect(new Vector2(i*size,j*size),size,size, Color.black, 100);
+                    //batch.fillRect(new Vector2(i*size-10,j*size-10),size,size, Color.DARK_GRAY, 10);
                     //System.out.println(i +","+j);
+                    drawCube(batch,i*size,j*size,size,size,viewscreen,d);
                 }
             }
         }
         batch.fillRect(new Vector2(-1000,walls[0].length*size), walls.length*size+2000, 1000, Color.black, 100);
     }
-    public void drawCube(int X, int Y, int W, int H){
-        double x=(double)X;
-        double y=(double)Y;
-        double w=(double)W;
-        double h=(double)H;
+    public void drawCube(ImageCollection batch,double X, double Y, double W, double H,ViewScreen vs,Dimension d){
+        double depth=1.05;
+        Color c=Color.BLACK;
+        double x1;
+        double y1;
+        for(depth=1.05; depth>=.95; depth-=.02){
+            x1=X-(-vs.GetX()+d.getWidth()/2+W/2);
+            y1=Y-(-vs.GetY()+d.getHeight()/2+H/2);
+            x1*=depth;
+            y1*=depth;
+            x1+=-vs.GetX()+d.getWidth()/2+W/2;
+            y1+=-vs.GetY()+d.getHeight()/2+H/2;
+            batch.fillRect(new Vector2(x1,y1), (int)(W*depth)+2, (int)(H*depth)+2, c,(int)(100*depth));
+            c=Color.GRAY;
+        }
         
     }
 }
