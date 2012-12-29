@@ -36,12 +36,13 @@ public class GameLoop extends Game{
     int wheelRot;
     @Override
     public void InitializeAndLoad() {
-        player=new Player(new Vector2());
+        player=new Player(new Vector2(32,32));
         shells=new ParticleManager(1000,400,0.2,0.1,.5,Color.yellow);
         debris=new ParticleManager(1000,400,0.2,0.1,.5,Color.DARK_GRAY);
         blood=new ParticleManager(1000,1600,0.2,0,0,Color.RED);
         objects=new LinkedList<GameObject>();
         level=new Level("Levels/Level_Caves.txt",player,objects);
+        level.setColors(new Color(40,20,0),new Color(20,10,0),new Color(30,15,0));
         background1=new StarBG();
         this.setBackground(new Color(10,20,30));
         dvorak=false;

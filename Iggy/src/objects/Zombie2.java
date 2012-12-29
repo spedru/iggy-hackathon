@@ -40,6 +40,8 @@ public class Zombie2 extends Enemy{
                     this.position.dX(4);
                     velocity=new Vector2();
                     this.position.dY(-2);
+                    updateBoundingBox();
+                    if (level.collide(boundingBox))this.position.dY(2);
                 }
             } else if (this.position.getX() < player.position.getX()) {
                 this.position.dX(4);
@@ -48,6 +50,8 @@ public class Zombie2 extends Enemy{
                     this.position.dX(-4);
                     velocity=new Vector2();
                     this.position.dY(-2);
+                    updateBoundingBox();
+                    if (level.collide(boundingBox))this.position.dY(2);
                 }
             }
         }
