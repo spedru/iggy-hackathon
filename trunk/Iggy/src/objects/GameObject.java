@@ -31,6 +31,7 @@ public abstract class GameObject {
         velocity=new Vector2();
         depth=10;
         alive=true;
+        updateBoundingBox();
         create();
     }
     public abstract void create();
@@ -52,20 +53,8 @@ public abstract class GameObject {
         }
         return null;
     }
-    public Bullet hit(LinkedList<GameObject> objects){
-        ListIterator l=objects.listIterator();
-        while(l.hasNext()){
-            GameObject g=(GameObject)l.next();
-            if(g.boundingBox.intersects(boundingBox)){
-                if(g instanceof Bullet){
-                    return (Bullet)g;
-                }
-            }
-        }
-        return null;
-    }
-    
     public void draw(ImageCollection batch){
+        sprite.draw(batch, position, depth);
         if(sprite!=null)sprite.draw(batch, position, depth);
     }
     public void updateBoundingBox(){

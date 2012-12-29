@@ -6,6 +6,8 @@ package objects;
 
 import Utilities.ImageCollection;
 import Utilities.Vector2;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
 /**
  *
@@ -24,11 +26,23 @@ public abstract class Enemy extends GameObject{
             p.setSprite(new Animation("hittest",1, "png"));
         }
     }
-    public void create(){
-        
+
+    public void hit(LinkedList<GameObject> objects){
+        ListIterator l=objects.listIterator();
+        while(l.hasNext()){
+            GameObject o=(GameObject) l.next();
+            if(o instanceof Bullet && o.alive){
+                if(o.boundingBox.intersects(boundingBox)){
+                    health-=((Bullet)o).damage;
+                    o.alive=false;
+                    if(health<=0){
+                        alive=false;
+                    }
+                }
+            }
+        }
     }
-    @Override
-    public void draw(ImageCollection batch){
+    public void create(){
         
     }
 }
