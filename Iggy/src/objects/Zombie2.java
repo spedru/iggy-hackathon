@@ -4,29 +4,27 @@
  */
 package objects;
 
-import Utilities.Rect;
 import Utilities.Vector2;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.ListIterator;
 import world.Level;
 
 /**
  *
  * @author Sam
  */
-public class Zombie extends Enemy{
-    public Zombie(Vector2 pos){
-        super(new Animation("testzombie",1,"png"),pos);
+public class Zombie2 extends Enemy{
+    public Zombie2(Vector2 pos){
+        super(new Animation("testzombie", 1, "png"), pos);
         this.health=100;
-
+        
     }
 
     @Override
     public void create() {
+      //throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
+       @Override
     public void step(Level level, Player player, LinkedList<GameObject> objects) {
         attack(player);
         updateBoundingBox();
@@ -36,16 +34,34 @@ public class Zombie extends Enemy{
         }
         if (distanceToObject(player) < 450) {
             if (this.position.getX() > player.position.getX()) {
-                this.position.dX(-2);
+                this.position.dX(-4);
                 updateBoundingBox();
                 if (level.collide(boundingBox)) {
-                    this.position.dX(2);
+                    this.position.dX(4);
                 }
             } else if (this.position.getX() < player.position.getX()) {
-                this.position.dX(2);
+                this.position.dX(4);
                 updateBoundingBox();
                 if (level.collide(boundingBox)) {
-                    this.position.dX(-2);
+                    this.position.dX(-4);
+                }
+            }
+        }
+        if(distanceToObject(player)<50){
+            if(this.position.getX()>player.position.getX()){
+                this.position.dX(-6);
+                updateBoundingBox();
+                if(level.collide(this.boundingBox)){
+                    this.position.dX(6);
+                    this.velocity.setY(-3);
+                }
+            }
+            else if(this.position.getX()<player.position.getX()){
+                this.position.dX(6);
+                updateBoundingBox();
+                if(level.collide(this.boundingBox)){
+                    this.position.dX(-6);
+                    this.velocity.setY(-3);
                 }
             }
         }
@@ -64,5 +80,3 @@ public class Zombie extends Enemy{
         }
     }
 }
-
-
