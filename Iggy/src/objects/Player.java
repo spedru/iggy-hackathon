@@ -27,6 +27,8 @@ public class Player extends GameObject{
     boolean facing;
     Animation pistol;
     Animation pistolarm;
+    Animation knuck;
+    Animation knack;
     Animation shotgun;
     Animation head;
     Animation muzzleflare;
@@ -40,6 +42,7 @@ public class Player extends GameObject{
         shotgun=new Animation("shotgun_temp",2,"png");
         pistol=new Animation("pover",2,"png");
         pistolarm=new Animation("punder",2,"png");
+        knuck=new Animation("knuck",4,"png");
         
         head=new Animation("head",2,"png");
         muzzleflare=new Animation("muzzleflare",2,"png");
@@ -48,7 +51,7 @@ public class Player extends GameObject{
         currentweapon=2;
         canshoot=0;
         weapons=new boolean[4];
-        weapons[3]=true;
+        weapons[0]=true;
         weapons[1]=true;
         weapons[2]=true;
         facing=true;
@@ -95,7 +98,7 @@ public class Player extends GameObject{
     }
     @Override
     public void step(Level level, Player player, LinkedList<GameObject> objects) {
-        if(firing<5)firing++;
+        if(firing<10)firing++;
         canshoot=Math.max(0,canshoot-1);
         if(level.collide(boundingBox)){
             position.subtract(velocity);
@@ -130,8 +133,8 @@ public class Player extends GameObject{
             left.index=8;
         }
         else{
-            right.speed=(float) (velocity.getX() / 16);
-            left.speed=(float) (velocity.getX() / 16);
+            right.speed=(float) (velocity.getX() / 12);
+            left.speed=(float) (velocity.getX() / 12);
         }
         
     }
@@ -154,21 +157,13 @@ public class Player extends GameObject{
         m.dY(-viewscreen.GetY());
         m.subtract(position);
         double dir=Math.atan2(m.getY(),m.getX());
-        gunpos=position.clone();
-        gunpos.add(new Vector2(Math.cos(dir)*16,Math.sin(dir)*16));
-        gunpos.dY(-3);
-        pistol.rotate(dir);
-        pistolarm.rotate(dir);
-        shotgun.rotate(dir);
-        if(firing==0)muzzleflare.rotate(dir);
-        dir=Math.atan2(m.getY()+16,m.getX());
-        head.rotate(dir);
         if(m.getX()>0){
             shotgun.index=0;
             pistol.index=0;
             pistolarm.index=0;
             head.index=0;
             facing=true;
+            knuck=new Animation("knuck",4,"png");
         }
         else{
             shotgun.index=1;
@@ -176,7 +171,19 @@ public class Player extends GameObject{
             pistolarm.index=1;
             head.index=1;
             facing=false;
+            knuck=new Animation("knack",4,"png");
         }
+        gunpos=position.clone();
+        gunpos.add(new Vector2(Math.cos(dir)*16,Math.sin(dir)*16));
+        gunpos.dY(-3);
+        pistol.rotate(dir);
+        pistolarm.rotate(dir);
+        shotgun.rotate(dir);
+        knuck.rotate(dir);
+        if(firing==0)muzzleflare.rotate(dir);
+        dir=Math.atan2(m.getY()+16,m.getX());
+        head.rotate(dir);
+        
     }
     public void move(boolean left,boolean right){
         if(left&&!right){
@@ -194,6 +201,14 @@ public class Player extends GameObject{
     }
     @Override
     public void draw(ImageCollection batch){
+        if(currentweapon==FISTS){
+            if(firing<8){
+                knuck.index=firing/2;
+            }
+            else knuck.index=0;
+            knuck.draw(batch, gunpos, 120);
+        }
+        else{
         if(firing<2){
             muzzleflare.index=firing;
             muzzleflare.draw(batch, gunpos, 120);
@@ -206,6 +221,7 @@ public class Player extends GameObject{
                 pistol.draw(batch, gunpos, 120);
                 pistolarm.draw(batch, gunpos, 98);
                 break;
+        }
         }
         position.dY(-12);
         head.draw(batch, position, 110);
@@ -231,7 +247,6 @@ public class Player extends GameObject{
                     b.type=-1;
                     b.damage=50;
                     objects.add(b);
-                    firing=10;
                     canshoot=20;
                     break;
                 case PISTOL:

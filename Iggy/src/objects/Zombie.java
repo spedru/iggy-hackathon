@@ -34,7 +34,7 @@ public class Zombie extends Enemy{
             position.subtract(velocity);
             velocity=new Vector2();
         }
-        if (distanceToObject(player) < 450) {
+        if ((distanceToObject(player) < 450||health<80)) {
             if (this.position.getX() > player.position.getX()) {
                 this.position.dX(-2);
                 updateBoundingBox();

@@ -29,7 +29,7 @@ public class FleshZombie extends Enemy{
             this.position.subtract(this.velocity);
             this.velocity=new Vector2();
         }
-        if(this.distanceToObject(player)<450){
+        if((distanceToObject(player) < 450||health<80)){
             if(this.position.getX()>player.position.getX()){
                 this.position.dX(-2);
                 this.updateBoundingBox();

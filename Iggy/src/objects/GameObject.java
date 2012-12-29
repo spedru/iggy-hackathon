@@ -70,4 +70,23 @@ public abstract class GameObject {
         v.subtract(other.position);
         return v.length();
     }
+    public void moveToContact(Level level, Vector2 move){
+        position.add(move);
+        updateBoundingBox();
+        if(level.collide(boundingBox)){
+            position.subtract(move);
+            position.dX(move.getX());
+            updateBoundingBox();
+            if(level.collide(boundingBox)){
+                position.dX(-move.getX());
+                move.setX(0);
+            }
+            position.dY(move.getY());
+            updateBoundingBox();
+            if(level.collide(boundingBox)){
+                position.dY(-move.getY());
+                move.setY(0);
+            }
+        }
+    }
 }
