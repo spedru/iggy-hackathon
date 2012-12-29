@@ -31,20 +31,33 @@ public class Zombie extends Enemy{
     public void step(Level level, Player player, LinkedList<GameObject> objects) {
         hit(objects);
         attack(player);
+        updateBoundingBox();
+        if(level.collide(boundingBox)){
+            position.subtract(velocity);
+            velocity=new Vector2();
+        }
         if(this.position.getX()>player.position.getX()){
             this.position.dX(-2);
+            updateBoundingBox();
+            if (level.collide(boundingBox)){
+            this.position.dX(2);
+        }
         }
         else if(this.position.getX()<player.position.getX()){
             this.position.dX(2);
+            updateBoundingBox();
+            if (level.collide(boundingBox)){
+            this.position.dX(-2);
         }
-        position.dY(velocity.getY());
+        }
+        position.dY(1);
         updateBoundingBox();
         if (level.collide(boundingBox)){
             velocity.setY(0);
         }
         else
              velocity.dY(.2);
-        position.dY(velocity.getY());
+        position.dY(-1);
     }
 
 }

@@ -23,7 +23,7 @@ public abstract class Enemy extends GameObject{
     }
     public void attack(Player p){
         if(this.boundingBox.intersects(p.boundingBox)){
-            p.setSprite(new Animation("hittest",1, "png"));
+            //p.setSprite(new Animation("hittest",1, "png"));
         }
     }
 
