@@ -57,8 +57,12 @@ public class Zombie extends Enemy{
         else
              velocity.dY(.2);
         position.dY(-1);
+        if(this.position.getY()>player.position.getY()){
+            if(level.collide(this.boundingBox)){
+                velocity.setY(-5);
+            }    
+        }
     }
-
 }
 
 
