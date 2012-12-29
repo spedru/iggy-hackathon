@@ -7,7 +7,9 @@ package particlefx;
 
 import Utilities.ImageCollection;
 import Utilities.Vector2;
+import Utilities.ViewScreen;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import world.Level;
@@ -42,18 +44,25 @@ public class ParticleManager {
             }
             else{
                 p.update(friction, gravity);
-                if(bounce>=0){
+                
+                if(bounce>=0&& p.depth<=1.05){
                     if(level.getCell(p.position)!=0){
                         p.position.subtract(p.velocity);
                         p.position.dX(p.velocity.getX());
                         if(level.getCell(p.position)!=0){
                             p.position.dX(-p.velocity.getX());
+                            
                         }
+                        
                         p.position.dY(p.velocity.getY());
                         if(level.getCell(p.position)!=0){
                             p.position.dY(-p.velocity.getY());
+                            p.position.setY(64*Math.round(p.position.getY()/64));
                         }
+                        
                         p.velocity=new Vector2(p.velocity.getX()*-bounce,p.velocity.getY()*-bounce);
+                        p.dspeed*=bounce;
+                        if(bounce==0)p.falling=false;
                     }
                 }
             }
@@ -76,11 +85,19 @@ public class ParticleManager {
             addParticle(position,direction+offset()*offset,Math.sqrt(Math.random())*radius);
         }
     }
-    public void draw(ImageCollection batch){
+    public void draw(ImageCollection batch,ViewScreen vs, Dimension d){
         ListIterator l=particles.listIterator();
         while(l.hasNext()){
             Particle p=(Particle) l.next();
-            batch.fillRect(p.position,2, 2, color, 100);
+            double x1=p.position.getX();
+            double y1=p.position.getY();
+            x1-=(-vs.GetX()+d.getWidth()/2);
+            y1-=(-vs.GetY()+d.getHeight()/2);
+            x1*=p.depth;
+            y1*=p.depth;
+            x1+=-vs.GetX()+d.getWidth()/2;
+            y1+=-vs.GetY()+d.getHeight()/2;
+            batch.fillRect(new Vector2(x1,y1),2, 2, color, (int)(2+p.depth*100));
 
         }
     }

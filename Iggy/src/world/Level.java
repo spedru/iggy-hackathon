@@ -117,12 +117,14 @@ public class Level {
                 if(walls[i][j]==1){
                     //batch.drawRect(cellBounds(i,j), Color.black, 100);
                     if(i==0){
-                        batch.fillRect(new Vector2(-1000,j*size),1000+size,size, Color.black, 100);
-                        batch.fillRect(new Vector2(-1000-10,j*size-10),1000+size,size, Color.DARK_GRAY, 10);
+                        //batch.fillRect(new Vector2(-1000,j*size),1000+size,size, Color.black, 100);
+                        //batch.fillRect(new Vector2(-1000-10,j*size-10),1000+size,size, Color.DARK_GRAY, 10);
+                        drawCube(batch,-1000,j*size,1000+size,size,viewscreen,d);
                     }
                     if(i==walls.length-1){
-                        batch.fillRect(new Vector2(i*size,j*size),1000,size, Color.black, 100);
-                        batch.fillRect(new Vector2(i*size-10,j*size-10),1000,size, Color.DARK_GRAY, 10);
+                        //batch.fillRect(new Vector2(i*size,j*size),1000,size, Color.black, 100);
+                        //batch.fillRect(new Vector2(i*size-10,j*size-10),1000,size, Color.DARK_GRAY, 10);
+                        drawCube(batch,i*size,j*size,1000,size,viewscreen,d);
                     }
                     //batch.fillRect(new Vector2(i*size,j*size),size,size, Color.black, 100);
                     //batch.fillRect(new Vector2(i*size-10,j*size-10),size,size, Color.DARK_GRAY, 10);
@@ -131,7 +133,8 @@ public class Level {
                 }
             }
         }
-        batch.fillRect(new Vector2(-1000,walls[0].length*size), walls.length*size+2000, 1000, Color.black, 100);
+        //batch.fillRect(new Vector2(-1000,walls[0].length*size), walls.length*size+2000, 1000, Color.black, 100);
+        drawCube(batch,-1000,walls[0].length*size,walls.length*size+2000,1000,viewscreen,d);
     }
     public void drawCube(ImageCollection batch,double X, double Y, double W, double H,ViewScreen vs,Dimension d){
         double depth=1.05;
@@ -145,7 +148,7 @@ public class Level {
             y1*=depth;
             x1+=-vs.GetX()+d.getWidth()/2+W/2;
             y1+=-vs.GetY()+d.getHeight()/2+H/2;
-            batch.fillRect(new Vector2(x1,y1), (int)(W*depth)+2, (int)(H*depth)+2, c,(int)(100*depth));
+            batch.fillRect(new Vector2(x1,y1), (int)(W*depth)+2, (int)(H*depth)+2, c,(int)(-105+200*depth));
             c=Color.GRAY;
         }
         
