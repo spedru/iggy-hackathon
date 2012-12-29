@@ -92,6 +92,7 @@ public class GameLoop extends Game{
         vs.subtract(new Vector2(this.getWidth()/2,this.getHeight()/2));
         viewScreen.set(vs);
         shells.update(level);
+        debris.update(level);
         blood.update(level);
     }
 
