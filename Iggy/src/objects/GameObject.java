@@ -52,6 +52,18 @@ public abstract class GameObject {
         }
         return null;
     }
+    public Bullet hit(LinkedList<GameObject> objects){
+        ListIterator l=objects.listIterator();
+        while(l.hasNext()){
+            GameObject g=(GameObject)l.next();
+            if(g.boundingBox.intersects(boundingBox)){
+                if(g instanceof Bullet){
+                    return (Bullet)g;
+                }
+            }
+        }
+        return null;
+    }
     
     public void draw(ImageCollection batch){
         if(sprite!=null)sprite.draw(batch, position, depth);
