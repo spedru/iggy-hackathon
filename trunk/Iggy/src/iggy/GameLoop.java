@@ -66,6 +66,13 @@ public class GameLoop extends Game{
         } else {
             player.resetJump();
         }
+        if(keyboard.isKeyDown('e')){
+            player.switchUp();
+        }
+        else if(keyboard.isKeyDown('q')){
+            player.switchDown();
+        }
+        else player.resetSwitch();
         if(mouse.isPressed(mouse.LEFT_BUTTON)){
             player.shoot(objects, mouse.location(), viewScreen,shells);
         }

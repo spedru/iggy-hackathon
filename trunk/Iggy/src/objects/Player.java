@@ -23,6 +23,7 @@ public class Player extends GameObject{
     int firing=2;
     int currentweapon;
     boolean canJump;
+    boolean canSwitch;
     Animation gun;
     Animation head;
     Animation muzzleflare;
@@ -32,7 +33,7 @@ public class Player extends GameObject{
         gun=new Animation("shotgun_temp",2,"png");
         head=new Animation("head",2,"png");
         muzzleflare=new Animation("muzzleflare",2,"png");
-        currentweapon=3;
+        currentweapon=1;
         canshoot=0;
         weapons=new boolean[4];
         weapons[0]=true;
@@ -43,7 +44,41 @@ public class Player extends GameObject{
         jumps=0;
         canJump=false;
     }
+    public void switchUp() {
+        if (canSwitch) {
+            canSwitch=false;
+            currentweapon++;
+            if (currentweapon > weapons.length - 1) {
+                    currentweapon = 0;
+                }
+            while (!weapons[currentweapon]) {
+                currentweapon++;
+                if (currentweapon > weapons.length - 1) {
+                    currentweapon = 0;
+                }
+            }
+        }
+    }
 
+    public void switchDown() {
+        if (canSwitch) {
+            canSwitch=false;
+            currentweapon--;
+            if (currentweapon < 0) {
+                    currentweapon = weapons.length - 1;
+                }
+            while (!weapons[currentweapon]) {
+                currentweapon--;
+                if (currentweapon < 0) {
+                    currentweapon = weapons.length - 1;
+                }
+            }
+        }
+    }
+    
+    public void resetSwitch(){
+        canSwitch=true;
+    }
     @Override
     public void step(Level level, Player player, LinkedList<GameObject> objects) {
         if(firing<5)firing++;
@@ -153,6 +188,10 @@ public class Player extends GameObject{
             pos.dY(-3);
             switch(currentweapon){
                 case FISTS:
+                    Bullet b=new Bullet(pos,dir,10);
+                    b.type=-1;
+                    b.damage=50;
+                    objects.add(b);
                     firing=10;
                     break;
                 case PISTOL:
