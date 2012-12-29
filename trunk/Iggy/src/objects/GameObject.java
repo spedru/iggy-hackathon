@@ -42,7 +42,9 @@ public abstract class GameObject {
         step(level,player,objects);
     }
     public abstract void step(Level level, Player player, LinkedList<GameObject> objects);
-
+    public double direction(){
+        return Math.atan2(-velocity.getY(), velocity.getX());
+    }
     public GameObject collide(LinkedList<GameObject> objects){
         ListIterator l=objects.listIterator();
         while(l.hasNext()){

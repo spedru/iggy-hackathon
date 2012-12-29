@@ -8,6 +8,7 @@ import Utilities.ImageCollection;
 import Utilities.Vector2;
 import java.util.LinkedList;
 import java.util.ListIterator;
+import particlefx.ParticleManager;
 
 /**
  *
@@ -27,13 +28,14 @@ public abstract class Enemy extends GameObject{
         }
     }
 
-    public void hit(LinkedList<GameObject> objects){
+    public void hit(LinkedList<GameObject> objects,ParticleManager blood){
         ListIterator l=objects.listIterator();
         while(l.hasNext()){
             GameObject o=(GameObject) l.next();
             if(o instanceof Bullet && o.alive){
                 if(o.boundingBox.intersects(boundingBox)){
                     health-=((Bullet)o).damage;
+                    blood.coneExplosion(o.position, 3, o.direction(),0.5,10);
                     o.alive=false;
                     if(health<=0){
                         alive=false;

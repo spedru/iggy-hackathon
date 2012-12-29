@@ -8,6 +8,7 @@ import Utilities.ImageCollection;
 import Utilities.Vector2;
 import java.awt.Color;
 import java.util.LinkedList;
+import particlefx.ParticleManager;
 import world.Level;
 
 /**
@@ -31,8 +32,12 @@ public class Bullet extends GameObject{
 
     @Override
     public void step(Level level, Player player, LinkedList<GameObject> objects) {
+        
+    }
+    public void checkWalls(Level level, ParticleManager shells){
         if(level.collide(this.boundingBox)){
             this.alive=false;
+            shells.addExplosion(position, 5, velocity.length()/2);
         }
     }
     @Override
