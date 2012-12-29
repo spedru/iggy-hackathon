@@ -102,8 +102,8 @@ public class GameLoop extends Game{
             GameObject o=(GameObject)l.next();
             o.draw(batch);
         }
-        shells.draw(batch);
-        blood.draw(batch);
+        shells.draw(batch,viewScreen, this.getSize());
+        blood.draw(batch,viewScreen, this.getSize());
         background1.draw(batch, viewScreen,this.getSize());
     }
 

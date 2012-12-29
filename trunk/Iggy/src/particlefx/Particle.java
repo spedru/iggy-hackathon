@@ -15,18 +15,26 @@ public class Particle {
     Vector2 position;
     Vector2 velocity;
     int life;
+    double depth;
+    double dspeed;
+    boolean falling;
     public Particle(Vector2 Position, Vector2 Velocity,int Life){
         position=Position.clone();
         velocity=Velocity.clone();
         life=Life;
+        depth=1;
+        dspeed=(Math.random()-0.5)*0.005;
+        falling=true;
     }
     public boolean alive(){
         return (life>0);
     }
     public void update(double friction, double gravity){
+        depth+=dspeed;
         life--;
         position.add(velocity);
-        velocity.dY(gravity);
+        if(falling)velocity.dY(gravity);
+        else velocity.dY(0.05);
         if(friction>0){
             double v=velocity.length()-friction;
             if(v>0){
@@ -34,6 +42,8 @@ public class Particle {
                 velocity=new Vector2(velocity.getX()*v,velocity.getY()*v);
             }
             else velocity=new Vector2();
+            if(dspeed>0)dspeed=Math.max(0, dspeed-friction/2);
+            if(dspeed<0)dspeed=Math.min(0, dspeed+friction/2);
         }
     }
 }

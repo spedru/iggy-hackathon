@@ -44,6 +44,7 @@ public class Bullet extends GameObject{
     public void checkWalls(Level level, ParticleManager shells){
         if(level.collide(this.boundingBox)){
             this.alive=false;
+            position.subtract(velocity);
             shells.addExplosion(position, 5, velocity.length()/4);
         }
     }
