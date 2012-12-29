@@ -106,10 +106,17 @@ public class Level {
             for(int j=0; j<walls[0].length; j++){
                 if(walls[i][j]==1){
                     //batch.drawRect(cellBounds(i,j), Color.black, 100);
+                    if(i==0){
+                        batch.fillRect(new Vector2(-1000,j*size),1000+size,size, Color.black, 100);
+                    }
+                    if(i==walls.length-1){
+                        batch.fillRect(new Vector2(i*size,j*size),1000,size, Color.black, 100);
+                    }
                     batch.fillRect(new Vector2(i*size,j*size),size,size, Color.black, 100);
                     //System.out.println(i +","+j);
                 }
             }
         }
+        batch.fillRect(new Vector2(-1000,walls[0].length*size), walls.length*size+2000, 1000, Color.black, 100);
     }
 }

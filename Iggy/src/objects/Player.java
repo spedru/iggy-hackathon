@@ -145,7 +145,7 @@ public class Player extends GameObject{
                 case FISTS:
                     break;
                 case PISTOL:
-                    objects.add(new Bullet(pos,dir+offset()*.1,10));
+                    objects.add(new Bullet(pos,dir+offset()*.1,20));
                     shells.addExplosion(position,1,3);
                     canshoot=20;
                     break;
@@ -153,12 +153,12 @@ public class Player extends GameObject{
                     canshoot=45;
                     shells.addExplosion(position,1,3);
                     for(int i=0; i<6; i++){
-                        objects.add(new Bullet(pos,dir+offset()*.3,10));
+                        objects.add(new Bullet(pos,dir+offset()*.3,20));
                     }
                     break;
                 case MACHINEGUN:
                     shells.addExplosion(position,1,4);
-                    objects.add(new Bullet(pos,dir+offset()*.1,10));
+                    objects.add(new Bullet(pos,dir+offset()*.1,20));
                     canshoot=7;
                     break;
             }
