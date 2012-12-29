@@ -28,8 +28,14 @@ import objects.Zombie2;
 public class Level {
     int[][] walls;
     final int size=64;
+    Color front;
+    Color side;
+    Color back;
     public Level(String level,Player player,LinkedList<GameObject>objects){
         try {
+            front=Color.BLACK;
+            side=Color.GRAY;
+            back=Color.LIGHT_GRAY;
             String line;
             int i = 0;
             int j = 0;
@@ -132,14 +138,16 @@ public class Level {
             for(int j=y-2; j<y+h; j++){
                 try{
                 if(walls[i][j]==1){
-                    if(i==0){;
-                        drawCube(batch,-1000,j*size,1000+size,size,viewscreen,d);
+                    if(i==0){
+                        drawFront(batch,-1000,j*size,1000+size,size,viewscreen,d);
                     }
                     if(i==walls.length-1){
-                        drawCube(batch,i*size,j*size,1000,size,viewscreen,d);
-                        break;
+                        drawFront(batch,i*size,j*size,1000,size,viewscreen,d);
                     }
-                    drawCube(batch,i*size,j*size,size,size,viewscreen,d);
+                    drawFront(batch,i*size,j*size,size,size,viewscreen,d);
+                    if(!(walls[i-1][j]==1&&walls[i][j-1]==1&&walls[i+1][j]==1&&walls[i][j+1]==1)){
+                        drawCube(batch,i*size,j*size,size,size,viewscreen,d);
+                    }
                 }
                 if(walls[i][j]==-1){
                     drawBack(batch,i*size,j*size,size,size,viewscreen,d);
@@ -154,25 +162,22 @@ public class Level {
         drawCube(batch,-1000,walls[0].length*size,walls.length*size+2000,1000,viewscreen,d);
     }
     public void drawCube(ImageCollection batch,double X, double Y, double W, double H,ViewScreen vs,Dimension d){
-        double depth=1.05;
-        Color c=Color.BLACK;
+        double depth=1.03;
         double x1;
         double y1;
-        for(depth=1.05; depth>=.95; depth-=.02){
+        for(depth=1.04; depth>=.95; depth-=.01){
             x1=X-(-vs.GetX()+d.getWidth()/2+W/2);
             y1=Y-(-vs.GetY()+d.getHeight()/2+H/2);
             x1*=depth;
             y1*=depth;
             x1+=-vs.GetX()+d.getWidth()/2+W/2;
             y1+=-vs.GetY()+d.getHeight()/2+H/2;
-            batch.fillRect(new Vector2(x1,y1), (int)(W*depth)+2, (int)(H*depth)+2, c,(int)(100*depth));
-            c=Color.GRAY;
+            batch.fillRect(new Vector2(x1,y1), (int)(W*depth)+2, (int)(H*depth)+2, side,(int)(100*depth));
         }
         
     }
-    public void drawBack(ImageCollection batch,double X, double Y, double W, double H,ViewScreen vs,Dimension d){
-        double depth=.95;
-        Color c=Color.LIGHT_GRAY;
+    public void drawFront(ImageCollection batch,double X, double Y, double W, double H,ViewScreen vs,Dimension d){
+        double depth=1.05;
         double x1;
         double y1;
             x1=X-(-vs.GetX()+d.getWidth()/2+W/2);
@@ -181,7 +186,24 @@ public class Level {
             y1*=depth;
             x1+=-vs.GetX()+d.getWidth()/2+W/2;
             y1+=-vs.GetY()+d.getHeight()/2+H/2;
-            batch.fillRect(new Vector2(x1,y1), (int)(W*depth)+2, (int)(H*depth)+2, c,(int)(100*depth));
+            batch.fillRect(new Vector2(x1,y1), (int)(W*depth)+2, (int)(H*depth)+2, front,(int)(100*depth));
+    }
+    public void drawBack(ImageCollection batch,double X, double Y, double W, double H,ViewScreen vs,Dimension d){
+        double depth=.95;
+        double x1;
+        double y1;
+            x1=X-(-vs.GetX()+d.getWidth()/2+W/2);
+            y1=Y-(-vs.GetY()+d.getHeight()/2+H/2);
+            x1*=depth;
+            y1*=depth;
+            x1+=-vs.GetX()+d.getWidth()/2+W/2;
+            y1+=-vs.GetY()+d.getHeight()/2+H/2;
+            batch.fillRect(new Vector2(x1,y1), (int)(W*depth)+2, (int)(H*depth)+2, back,(int)(100*depth));
         
+    }
+    public void setColors(Color Front, Color Side, Color Back){
+        front=Front;
+        side=Side;
+        back=Back;
     }
 }

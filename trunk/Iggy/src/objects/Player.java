@@ -215,6 +215,7 @@ public class Player extends GameObject{
     }
     public void shoot(LinkedList<GameObject> objects,Vector2 mouse,ViewScreen viewscreen,ParticleManager shells){
         if(canshoot==0){
+            Bullet b;
             firing=0;
             Vector2 m=mouse.clone();
             m.dX(-viewscreen.GetX());
@@ -226,7 +227,7 @@ public class Player extends GameObject{
             pos.dY(-6);
             switch(currentweapon){
                 case FISTS:
-                    Bullet b=new Bullet(pos,dir,10);
+                    b=new Bullet(pos,dir,10);
                     b.type=-1;
                     b.damage=50;
                     objects.add(b);
@@ -234,7 +235,9 @@ public class Player extends GameObject{
                     canshoot=20;
                     break;
                 case PISTOL:
-                    objects.add(new Bullet(pos,dir+offset()*.1,20));
+                    b=new Bullet(pos,dir+offset()*.1,20);
+                    b.damage=20;
+                    objects.add(b);
                     shells.addExplosion(gunpos,1,3);
                     canshoot=20;
                     break;
