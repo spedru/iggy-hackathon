@@ -24,20 +24,27 @@ public class Player extends GameObject{
     int currentweapon;
     boolean canJump;
     boolean canSwitch;
+    boolean facing;
     Animation gun;
     Animation head;
     Animation muzzleflare;
+    Animation left;
+    Animation right;
     boolean[] weapons;
     public Player(Vector2 pos){
         super(new Animation("legs",10,"png"),pos);
         gun=new Animation("shotgun_temp",2,"png");
         head=new Animation("head",2,"png");
         muzzleflare=new Animation("muzzleflare",2,"png");
-        currentweapon=1;
+        right=new Animation("legs",10,"png");
+        left=new Animation("lag",10,"png");
+        currentweapon=2;
         canshoot=0;
         weapons=new boolean[4];
-        weapons[0]=true;
+        weapons[3]=true;
         weapons[1]=true;
+        weapons[2]=true;
+        facing=true;
     }
     @Override
     public void create() {
@@ -109,13 +116,17 @@ public class Player extends GameObject{
             jumps=Math.min(jumps, 1);
         }
         position.dY(-1);
-
+        right.update();
+        left.update();
         if(velocity.getX()==0){
-            sprite.index=0;
+            right.index=0;
+            left.index=8;
         }
         else{
-            sprite.speed=(float) (velocity.getX() / 16);
+            right.speed=(float) (velocity.getX() / 16);
+            left.speed=(float) (velocity.getX() / 16);
         }
+        
     }
     public void jump(){
         if(canJump==true){
@@ -143,10 +154,12 @@ public class Player extends GameObject{
         if(m.getX()>0){
             gun.index=0;
             head.index=0;
+            facing=true;
         }
         else{
             gun.index=1;
             head.index=1;
+            facing=false;
         }
     }
     public void move(boolean left,boolean right){
@@ -173,7 +186,8 @@ public class Player extends GameObject{
         position.dY(-12);
         head.draw(batch, position, 110);
         position.dY(12);
-        sprite.draw(batch, position, depth);
+        if(facing)right.draw(batch, position, depth);
+        else left.draw(batch, position, depth);
     }
     public void shoot(LinkedList<GameObject> objects,Vector2 mouse,ViewScreen viewscreen,ParticleManager shells){
         if(canshoot==0){

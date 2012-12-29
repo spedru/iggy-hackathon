@@ -45,7 +45,7 @@ public class ParticleManager {
             else{
                 p.update(friction, gravity);
                 
-                if(bounce>=0&& p.depth<=1.04){
+                if(bounce>=0&& p.depth<=1.03 && p.depth>=.97){
                     if(level.getCell(p.position)!=0){
                         p.position.subtract(p.velocity);
                         p.position.dX(p.velocity.getX());
@@ -70,7 +70,7 @@ public class ParticleManager {
         }
     }
     public void addParticle(Vector2 position, Vector2 velocity){
-        particles.add(new Particle(position,velocity, life));
+        particles.add(new Particle(position,velocity,(int)( (Math.random()+.5)*(double)life)));
     }
     public void addParticle(Vector2 position, double direction, double speed){
         addParticle(position,new Vector2(Math.cos(direction)*speed,-Math.sin(direction)*speed));
