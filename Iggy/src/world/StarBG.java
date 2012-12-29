@@ -8,6 +8,7 @@ import Utilities.Image2D;
 import Utilities.ImageCollection;
 import Utilities.Vector2;
 import Utilities.ViewScreen;
+import java.awt.Dimension;
 
 /**
  *
@@ -21,11 +22,11 @@ public class StarBG {
             stars[i]=new Star();
         }
     }
-    public void draw(ImageCollection batch,Level level,ViewScreen vs){
+    public void draw(ImageCollection batch,ViewScreen vs,Dimension d){
         //batch.Draw(gradient,new Vector2(-vs.GetX()+400,level.height()-gradient.getHeight()/2),2);
         //batch.Draw(stars, new Vector2(-vs.GetX()+stars.getWidth()/2,-vs.GetY()+stars.getHeight()/2),1);
         for(int i=0; i<100; i++){
-            stars[i].draw(batch, vs);
+            stars[i].draw(batch, vs,d);
         }
     }
 }

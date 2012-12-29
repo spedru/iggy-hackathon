@@ -8,6 +8,7 @@ import Utilities.ImageCollection;
 import Utilities.Vector2;
 import Utilities.ViewScreen;
 import java.awt.Color;
+import java.awt.Dimension;
 
 /**
  *
@@ -18,16 +19,16 @@ public class Star {
     double y;
     double d;
     public Star(){
-        x=Math.random()*800;
-        y=Math.random()*600;
+        x=Math.random()*10000;
+        y=Math.random()*10000;
         d=0.01+Math.random()*0.04;
     }
-    public void draw(ImageCollection batch,ViewScreen vs){
+    public void draw(ImageCollection batch,ViewScreen vs,Dimension screen){
         double a=x+(d)*vs.GetX();
         double b=y+(d)*vs.GetY();
-        a%=800;
+        a%=screen.getWidth();
         a-=vs.GetX();
-        b%=600;
+        b%=screen.getHeight();
         b-=vs.GetY();
         batch.fillRect(new Vector2(a,b),1,1,Color.WHITE,1);
     }

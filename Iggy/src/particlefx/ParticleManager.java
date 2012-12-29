@@ -80,7 +80,7 @@ public class ParticleManager {
         ListIterator l=particles.listIterator();
         while(l.hasNext()){
             Particle p=(Particle) l.next();
-            batch.fillRect(p.position,2, 2, color, 150);
+            batch.fillRect(p.position,2, 2, color, 100);
 
         }
     }

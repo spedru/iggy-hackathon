@@ -95,7 +95,7 @@ public class GameLoop extends Game{
 
     @Override
     public void Draw(Graphics grphcs) {
-        level.draw(batch,viewScreen);
+        level.draw(batch,viewScreen,this.getSize());
         player.draw(batch);
         ListIterator l=objects.listIterator();
         while(l.hasNext()){
@@ -104,7 +104,7 @@ public class GameLoop extends Game{
         }
         shells.draw(batch);
         blood.draw(batch);
-        background1.draw(batch, level, viewScreen);
+        background1.draw(batch, viewScreen,this.getSize());
     }
 
     @Override
