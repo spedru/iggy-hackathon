@@ -64,11 +64,16 @@ public class ParticleManager {
         particles.add(new Particle(position,velocity, life));
     }
     public void addParticle(Vector2 position, double direction, double speed){
-        addParticle(position,new Vector2(Math.cos(direction)*speed,Math.sin(direction)*speed));
+        addParticle(position,new Vector2(Math.cos(direction)*speed,-Math.sin(direction)*speed));
     }
     public void addExplosion(Vector2 position, int size, double radius){
         for(int i=0; i<size; i++){
-            addParticle(position,Math.random()*2*Math.PI,Math.sqrt(Math.random()*radius));
+            addParticle(position,Math.random()*2*Math.PI,Math.sqrt(Math.random())*radius);
+        }
+    }
+    public void coneExplosion(Vector2 position, int size, double direction, double offset, double radius){
+        for(int i=0; i<size; i++){
+            addParticle(position,direction+offset()*offset,Math.sqrt(Math.random())*radius);
         }
     }
     public void draw(ImageCollection batch){
@@ -78,5 +83,8 @@ public class ParticleManager {
             batch.fillRect(p.position,2, 2, color, 150);
 
         }
+    }
+    public double offset(){
+        return Math.random()-0.5;
     }
 }

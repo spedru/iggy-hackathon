@@ -26,7 +26,7 @@ public class Player extends GameObject{
     Animation head;
     boolean[] weapons;
     public Player(Vector2 pos){
-        super(new Animation("leg",5,"png"),pos);
+        super(new Animation("legs",10,"png"),pos);
         gun=new Animation("shotgun_temp",2,"png");
         head=new Animation("head",2,"png");
         currentweapon=3;
@@ -75,7 +75,7 @@ public class Player extends GameObject{
             sprite.index=0;
         }
         else{
-            sprite.speed=(float) (velocity.getX() / 8);
+            sprite.speed=(float) (velocity.getX() / 16);
         }
     }
     public void jump(){

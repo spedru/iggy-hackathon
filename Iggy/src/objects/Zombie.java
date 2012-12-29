@@ -29,7 +29,6 @@ public class Zombie extends Enemy{
 
     @Override
     public void step(Level level, Player player, LinkedList<GameObject> objects) {
-        hit(objects);
         attack(player);
         updateBoundingBox();
         if(level.collide(boundingBox)){

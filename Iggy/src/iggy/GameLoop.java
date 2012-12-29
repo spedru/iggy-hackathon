@@ -11,6 +11,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.LinkedList;
 import java.util.ListIterator;
+import objects.Bullet;
+import objects.Enemy;
 import objects.GameObject;
 import objects.Player;
 import particlefx.ParticleManager;
@@ -24,11 +26,13 @@ public class GameLoop extends Game{
     Level level;
     Player player;
     ParticleManager shells;
+    ParticleManager blood;
     LinkedList<GameObject>objects;
     @Override
     public void InitializeAndLoad() {
         player=new Player(new Vector2());
-        shells=new ParticleManager(1000,100,0.5,0.1,.5,Color.DARK_GRAY);
+        shells=new ParticleManager(1000,100,0.2,0.1,.5,Color.DARK_GRAY);
+        blood=new ParticleManager(1000,400,0.2,0,0,Color.RED);
         objects=new LinkedList<GameObject>();
         level=new Level("Levels/Level_Wasteland.txt",player,objects);
         
@@ -45,6 +49,14 @@ public class GameLoop extends Game{
         while(l.hasNext()){
             GameObject o=(GameObject)l.next();
             o.update(level, player, objects);
+            if(o instanceof Enemy){
+                Enemy e=(Enemy)o;
+                e.hit(objects, blood);
+            }
+            if(o instanceof Bullet){
+                Bullet b=(Bullet)o;
+                b.checkWalls(level, shells);
+            }
             if(!o.alive)l.remove();
         }
         player.update(level, player, objects);
@@ -62,6 +74,7 @@ public class GameLoop extends Game{
         vs.subtract(new Vector2(this.getWidth()/2,this.getHeight()/2));
         viewScreen.set(vs);
         shells.update(level);
+        blood.update(level);
     }
 
     @Override
@@ -74,6 +87,7 @@ public class GameLoop extends Game{
             o.draw(batch);
         }
         shells.draw(batch);
+        blood.draw(batch);
     }
 
     @Override
