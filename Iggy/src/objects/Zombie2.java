@@ -14,7 +14,7 @@ import world.Level;
  */
 public class Zombie2 extends Enemy{
     public Zombie2(Vector2 pos){
-        super(new Animation("testzombie", 1, "png"), pos);
+        super(new Animation("fillerzombie", 1, "png"), pos);
         this.health=100;
         
     }

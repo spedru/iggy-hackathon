@@ -33,6 +33,7 @@ public class GameLoop extends Game{
     ParticleManager blood;
     LinkedList<GameObject>objects;
     boolean dvorak;
+    int wheelRot;
     @Override
     public void InitializeAndLoad() {
         player=new Player(new Vector2());
@@ -44,6 +45,7 @@ public class GameLoop extends Game{
         background1=new StarBG();
         this.setBackground(new Color(10,20,30));
         dvorak=false;
+        
     }
 
     @Override
@@ -53,6 +55,7 @@ public class GameLoop extends Game{
 
     @Override
     public void Update() {
+        
         ListIterator l=objects.listIterator();
         while(l.hasNext()){
             GameObject o=(GameObject)l.next();
@@ -75,7 +78,7 @@ public class GameLoop extends Game{
         } else {
             player.resetJump();
         }
-        if(keyboard.isKeyDown('e')){
+        if(keyboard.isKeyDown('e')||mouse.isPressed(mouse.RIGHT_BUTTON)){
             player.switchUp();
         }
         else if(keyboard.isKeyDown('q')){
@@ -83,7 +86,7 @@ public class GameLoop extends Game{
         
         }
         else player.resetSwitch();
-        
+        wheelRot=mouse.getWheelScroll();
         if(mouse.isPressed(mouse.LEFT_BUTTON)){
             player.shoot(objects, mouse.location(), viewScreen,shells);
         }

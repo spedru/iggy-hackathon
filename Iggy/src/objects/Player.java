@@ -25,15 +25,22 @@ public class Player extends GameObject{
     boolean canJump;
     boolean canSwitch;
     boolean facing;
-    Animation gun;
+    Animation pistol;
+    Animation pistolarm;
+    Animation shotgun;
     Animation head;
     Animation muzzleflare;
     Animation left;
     Animation right;
+    Vector2 gunpos;
     boolean[] weapons;
     public Player(Vector2 pos){
         super(new Animation("legs",10,"png"),pos);
-        gun=new Animation("shotgun_temp",2,"png");
+        gunpos=pos.clone();
+        shotgun=new Animation("shotgun_temp",2,"png");
+        pistol=new Animation("pover",2,"png");
+        pistolarm=new Animation("punder",2,"png");
+        
         head=new Animation("head",2,"png");
         muzzleflare=new Animation("muzzleflare",2,"png");
         right=new Animation("legs",10,"png");
@@ -147,17 +154,26 @@ public class Player extends GameObject{
         m.dY(-viewscreen.GetY());
         m.subtract(position);
         double dir=Math.atan2(m.getY(),m.getX());
-        gun.rotate(dir);
+        gunpos=position.clone();
+        gunpos.add(new Vector2(Math.cos(dir)*16,Math.sin(dir)*16));
+        gunpos.dY(-3);
+        pistol.rotate(dir);
+        pistolarm.rotate(dir);
+        shotgun.rotate(dir);
         if(firing==0)muzzleflare.rotate(dir);
         dir=Math.atan2(m.getY()+16,m.getX());
         head.rotate(dir);
         if(m.getX()>0){
-            gun.index=0;
+            shotgun.index=0;
+            pistol.index=0;
+            pistolarm.index=0;
             head.index=0;
             facing=true;
         }
         else{
-            gun.index=1;
+            shotgun.index=1;
+            pistol.index=1;
+            pistolarm.index=1;
             head.index=1;
             facing=false;
         }
@@ -180,9 +196,17 @@ public class Player extends GameObject{
     public void draw(ImageCollection batch){
         if(firing<2){
             muzzleflare.index=firing;
-            muzzleflare.draw(batch, position, 120);
+            muzzleflare.draw(batch, gunpos, 120);
         }
-        gun.draw(batch, position, 120);
+        switch (currentweapon){
+            case SHOTGUN:
+                shotgun.draw(batch, position, 120);
+                break;
+            case PISTOL:
+                pistol.draw(batch, gunpos, 120);
+                pistolarm.draw(batch, gunpos, 98);
+                break;
+        }
         position.dY(-12);
         head.draw(batch, position, 110);
         position.dY(12);
@@ -198,8 +222,8 @@ public class Player extends GameObject{
             m.subtract(position);
             double dir=Math.atan2(-m.getY(),m.getX());
             Vector2 pos=position.clone();
-            pos.add(new Vector2(Math.cos(dir)*16,-Math.sin(dir)*16));
-            pos.dY(-3);
+            pos.add(new Vector2(Math.cos(dir)*24,-Math.sin(dir)*24));
+            pos.dY(-6);
             switch(currentweapon){
                 case FISTS:
                     Bullet b=new Bullet(pos,dir,10);
@@ -207,21 +231,22 @@ public class Player extends GameObject{
                     b.damage=50;
                     objects.add(b);
                     firing=10;
+                    canshoot=20;
                     break;
                 case PISTOL:
                     objects.add(new Bullet(pos,dir+offset()*.1,20));
-                    shells.addExplosion(position,1,3);
+                    shells.addExplosion(gunpos,1,3);
                     canshoot=20;
                     break;
                 case SHOTGUN:
                     canshoot=45;
-                    shells.addExplosion(position,1,3);
+                    shells.addExplosion(gunpos,1,3);
                     for(int i=0; i<6; i++){
                         objects.add(new Bullet(pos,dir+offset()*.3,20));
                     }
                     break;
                 case MACHINEGUN:
-                    shells.addExplosion(position,1,4);
+                    shells.addExplosion(gunpos,1,4);
                     objects.add(new Bullet(pos,dir+offset()*.1,20));
                     canshoot=7;
                     break;
