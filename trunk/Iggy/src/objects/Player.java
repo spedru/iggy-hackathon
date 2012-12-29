@@ -113,5 +113,13 @@ public class Player extends GameObject{
         head.draw(batch, position, 110);
         position.dY(16);
     }
+    public void shoot(LinkedList<GameObject> objects,Vector2 mouse,ViewScreen viewscreen){
+        Vector2 m=mouse.clone();
+        m.dX(-viewscreen.GetX());
+        m.dY(-viewscreen.GetY());
+        m.subtract(position);
+        double dir=Math.atan2(-m.getY(),m.getX());
+        objects.add(new Bullet(position,dir+(Math.random()-0.5),10));
+    }
 
 }

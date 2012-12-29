@@ -18,6 +18,10 @@ public class Bullet extends GameObject{
         super(new Animation("bullet", 1, "png"), pos);
         velocity=vel.clone();
     }
+    public Bullet(Vector2 pos, double direction, double speed){
+        super(new Animation("bullet", 1, "png"), pos);
+        velocity=new Vector2(Math.cos(direction)*speed,-Math.sin(direction)*speed);
+    }
     @Override
     public void create() {
         
