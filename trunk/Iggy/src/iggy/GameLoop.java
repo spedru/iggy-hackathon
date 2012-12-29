@@ -66,22 +66,8 @@ public class GameLoop extends Game{
             if(!o.alive)l.remove();
         }
         player.update(level, player, objects);
-        if(dvorak){
-        player.move(keyboard.isKeyDown('a'), keyboard.isKeyDown('e'));
-        if (keyboard.isKeyDown(KeyEvent.VK_COMMA)) {
-            player.jump();
-        } else {
-            player.resetJump();
-        }
-        if(keyboard.isKeyDown(KeyEvent.VK_PERIOD)){
-            player.switchUp();
-        }
-        else if(keyboard.isKeyDown(KeyEvent.VK_QUOTE)){
-            player.switchDown();
-        }
-        }
-        else{
-            player.move(keyboard.isKeyDown('a'), keyboard.isKeyDown('d'));
+        
+        player.move(keyboard.isKeyDown('a'), keyboard.isKeyDown('d'));
         if (keyboard.isKeyDown('w')) {
             player.jump();
         } else {
@@ -95,7 +81,7 @@ public class GameLoop extends Game{
         
         }
         else player.resetSwitch();
-        }
+        
         if(mouse.isPressed(mouse.LEFT_BUTTON)){
             player.shoot(objects, mouse.location(), viewScreen,shells);
         }
