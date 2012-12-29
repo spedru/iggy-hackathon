@@ -29,16 +29,18 @@ public class GameLoop extends Game{
     Player player;
     StarBG background1;
     ParticleManager shells;
+    ParticleManager debris;
     ParticleManager blood;
     LinkedList<GameObject>objects;
     boolean dvorak;
     @Override
     public void InitializeAndLoad() {
         player=new Player(new Vector2());
-        shells=new ParticleManager(1000,100,0.2,0.1,.5,Color.DARK_GRAY);
+        shells=new ParticleManager(1000,100,0.2,0.1,.5,Color.yellow);
+        debris=new ParticleManager(1000,100,0.2,0.1,.5,Color.DARK_GRAY);
         blood=new ParticleManager(1000,400,0.2,0,0,Color.RED);
         objects=new LinkedList<GameObject>();
-        level=new Level("Levels/Level_Wasteland.txt",player,objects);
+        level=new Level("Levels/Level_Office2.txt",player,objects);
         background1=new StarBG();
         this.setBackground(new Color(10,20,30));
         dvorak=false;
@@ -61,7 +63,7 @@ public class GameLoop extends Game{
             }
             if(o instanceof Bullet){
                 Bullet b=(Bullet)o;
-                b.checkWalls(level, shells);
+                b.checkWalls(level, debris);
             }
             if(!o.alive)l.remove();
         }
@@ -103,6 +105,7 @@ public class GameLoop extends Game{
             o.draw(batch);
         }
         shells.draw(batch,viewScreen, this.getSize());
+        debris.draw(batch,viewScreen, this.getSize());
         blood.draw(batch,viewScreen, this.getSize());
         background1.draw(batch, viewScreen,this.getSize());
     }

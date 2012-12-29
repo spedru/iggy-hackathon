@@ -29,7 +29,7 @@ public abstract class GameObject {
         sprite=Sprite;
         position=Position.clone();
         velocity=new Vector2();
-        depth=10;
+        depth=100;
         alive=true;
         updateBoundingBox();
         create();

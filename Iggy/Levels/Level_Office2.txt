@@ -1,0 +1,21 @@
+
+
+                   x
+                   x
+         - -       x
+    xxxxxxxxxx---xxxxxxx
+    x- -- -- -- -- -- -x
+    x-1-- -- --1--1-- -xx
+    xxxx---xxxxxxxxxxxxxxx
+    x-1-x1-- -- -- -- -- 
+    x- --x-- --xx- -- --x1
+    xxxxxxxxxxxxxxxx---xxx
+    x- -- -- -x -- -- xx
+    x- -- -- --1-- --xxxx
+    x--xxxxxxxxxxxxxxxxxxx
+    xx -- -- -- -- -- --
+    xxx--1--1-xx--1-- --x
+    xxxxxxxxxxxxxxx--xxxxx
+    -- -- -- -- -- -x -x
+ @  -- -- --1-- -- x-1-x
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

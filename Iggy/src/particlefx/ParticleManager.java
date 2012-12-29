@@ -45,7 +45,7 @@ public class ParticleManager {
             else{
                 p.update(friction, gravity);
                 
-                if(bounce>=0&& p.depth<=1.05){
+                if(bounce>=0&& p.depth<=1.04){
                     if(level.getCell(p.position)!=0){
                         p.position.subtract(p.velocity);
                         p.position.dX(p.velocity.getX());
