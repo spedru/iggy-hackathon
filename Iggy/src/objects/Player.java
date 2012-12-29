@@ -18,13 +18,21 @@ import world.Level;
  */
 public class Player extends GameObject{
     int jumps;
+    int canshoot=0;
+    int currentweapon;
     boolean canJump;
     Animation gun;
     Animation head;
+    boolean[] weapons;
     public Player(Vector2 pos){
         super(new Animation("head",2,"png"),pos);
         gun=new Animation("shotgun_temp",2,"png");
         head=new Animation("head",2,"png");
+        currentweapon=2;
+        canshoot=0;
+        weapons=new boolean[4];
+        weapons[0]=true;
+        weapons[1]=true;
     }
     @Override
     public void create() {
@@ -34,6 +42,7 @@ public class Player extends GameObject{
 
     @Override
     public void step(Level level, Player player, LinkedList<GameObject> objects) {
+        canshoot=Math.max(0,canshoot-1);
         if(level.collide(boundingBox)){
             position.subtract(velocity);
             position.dX(velocity.getX());
@@ -114,14 +123,41 @@ public class Player extends GameObject{
         position.dY(16);
     }
     public void shoot(LinkedList<GameObject> objects,Vector2 mouse,ViewScreen viewscreen){
-        Vector2 m=mouse.clone();
-        m.dX(-viewscreen.GetX());
-        m.dY(-viewscreen.GetY());
-        m.subtract(position);
-        double dir=Math.atan2(-m.getY(),m.getX());
-        Vector2 pos=position.clone();
-        pos.add(new Vector2(Math.cos(dir)*16,-Math.sin(dir)*16));
-        objects.add(new Bullet(pos,dir+(Math.random()-0.5),10));
+        if(canshoot==0){
+            Vector2 m=mouse.clone();
+            m.dX(-viewscreen.GetX());
+            m.dY(-viewscreen.GetY());
+            m.subtract(position);
+            double dir=Math.atan2(-m.getY(),m.getX());
+            Vector2 pos=position.clone();
+            pos.add(new Vector2(Math.cos(dir)*16,-Math.sin(dir)*16));
+
+            switch(currentweapon){
+                case FISTS:
+                    break;
+                case PISTOL:
+                    objects.add(new Bullet(pos,dir+offset()*.1,10));
+                    canshoot=20;
+                    break;
+                case SHOTGUN:
+                    canshoot=45;
+                    for(int i=0; i<6; i++){
+                        objects.add(new Bullet(pos,dir+offset()*.3,10));
+                    }
+                    break;
+                case MACHINEGUN:
+                    objects.add(new Bullet(pos,dir+offset()*.1,10));
+                    canshoot=7;
+                    break;
+            }
+        }
     }
+    public double offset(){
+        return Math.random()-0.5;
+    }
+    public static final int FISTS=0;
+    public static final int PISTOL=1;
+    public static final int SHOTGUN=2;
+    public static final int MACHINEGUN=3;
 
 }
