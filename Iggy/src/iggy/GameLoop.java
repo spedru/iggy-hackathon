@@ -49,6 +49,9 @@ public class GameLoop extends Game{
         } else {
             player.resetJump();
         }
+        if(mouse.isPressed(mouse.LEFT_BUTTON)){
+            player.shoot(objects, mouse.location(), viewScreen);
+        }
         player.rotateHead(mouse.location(),viewScreen);
         Vector2 vs=player.position.clone();
         vs.subtract(new Vector2(this.getWidth()/2,this.getHeight()/2));
