@@ -4,6 +4,7 @@
  */
 package objects;
 
+import Utilities.ImageCollection;
 import Utilities.Vector2;
 
 /**
@@ -22,5 +23,12 @@ public abstract class Enemy extends GameObject{
         if(this.boundingBox.intersects(p.boundingBox)){
             p.setSprite(new Animation("hittest",1, "png"));
         }
+    }
+    public void create(){
+        
+    }
+    @Override
+    public void draw(ImageCollection batch){
+        
     }
 }
