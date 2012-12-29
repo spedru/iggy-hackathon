@@ -59,6 +59,11 @@ public class GameLoop extends Game{
     public void Draw(Graphics grphcs) {
         level.draw(batch);
         player.draw(batch);
+        ListIterator l=objects.listIterator();
+        while(l.hasNext()){
+            GameObject o=(GameObject)l.next();
+            o.draw(batch);
+        }
     }
 
     @Override
