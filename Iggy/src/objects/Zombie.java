@@ -29,11 +29,8 @@ public class Zombie extends Enemy{
 
     @Override
     public void step(Level level, Player player, LinkedList<GameObject> objects) {
-        Bullet b=hit(objects);
-        if(b!=null){
-            b.alive=false;
-            this.health-=b.damage;
-        }
+        hit(objects);
+        attack(player);
     }
 
     

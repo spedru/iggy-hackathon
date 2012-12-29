@@ -11,9 +11,12 @@ import Utilities.Vector2;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.logging.Logger;
+import objects.GameObject;
 import objects.Player;
+import objects.Zombie;
 
 /**
  *
@@ -22,7 +25,7 @@ import objects.Player;
 public class Level {
     int[][] walls;
     final int size=64;
-    public Level(String level,Player player){
+    public Level(String level,Player player,LinkedList<GameObject>objects){
         try {
             String line;
             int i = 0;
@@ -46,8 +49,12 @@ public class Level {
                             break;
                         case '@':
                             player.position=new Vector2(i*size+size/2,j*size+size/2);
+                            walls[i][j] = 0;       
+                            break;
+                        case '1':
+                            objects.add(new Zombie(new Vector2(i*64,j*64)));
+                            System.out.print("zombie");
                             walls[i][j] = 0;
-                            System.out.println("test");
                             break;
                         case ' ':
                             walls[i][j] = 0;

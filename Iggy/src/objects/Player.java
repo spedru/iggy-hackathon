@@ -119,7 +119,9 @@ public class Player extends GameObject{
         m.dY(-viewscreen.GetY());
         m.subtract(position);
         double dir=Math.atan2(-m.getY(),m.getX());
-        objects.add(new Bullet(position,dir+(Math.random()-0.5),10));
+        Vector2 pos=position.clone();
+        pos.add(new Vector2(Math.cos(dir)*16,-Math.sin(dir)*16));
+        objects.add(new Bullet(pos,dir+(Math.random()-0.5),10));
     }
 
 }

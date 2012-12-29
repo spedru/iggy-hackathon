@@ -4,7 +4,9 @@
  */
 package objects;
 
+import Utilities.ImageCollection;
 import Utilities.Vector2;
+import java.awt.Color;
 import java.util.LinkedList;
 import world.Level;
 
@@ -32,6 +34,10 @@ public class Bullet extends GameObject{
         if(level.collide(this.boundingBox)){
             this.alive=false;
         }
+    }
+    @Override
+    public void draw(ImageCollection batch){
+         batch.fillOval(position,5,5, Color.gray, depth);
     }
     
 }

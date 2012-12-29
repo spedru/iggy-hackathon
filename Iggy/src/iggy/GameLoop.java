@@ -25,8 +25,9 @@ public class GameLoop extends Game{
     @Override
     public void InitializeAndLoad() {
         player=new Player(new Vector2());
-        level=new Level("Levels/Level_Wasteland.txt",player);
         objects=new LinkedList<GameObject>();
+        level=new Level("Levels/Level_Wasteland.txt",player,objects);
+        
     }
 
     @Override
