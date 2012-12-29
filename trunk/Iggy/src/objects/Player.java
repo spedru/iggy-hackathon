@@ -9,6 +9,7 @@ import Utilities.ImageCollection;
 import Utilities.Vector2;
 import Utilities.ViewScreen;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import world.Level;
 
 /**
@@ -32,7 +33,7 @@ public class Player extends GameObject{
     }
 
     @Override
-    public void step(Level level, Player player, ArrayList<GameObject> objects) {
+    public void step(Level level, Player player, LinkedList<GameObject> objects) {
         if(level.collide(boundingBox)){
             position.subtract(velocity);
             position.dX(velocity.getX());
