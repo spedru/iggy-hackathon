@@ -13,7 +13,7 @@ import world.Level;
  * @author Sam
  */
 public class Bullet extends GameObject{
-    
+    public int damage;
     public Bullet(Vector2 pos, Vector2 vel){
         super(new Animation("bullet", 1, "png"), pos);
         velocity=vel.clone();
@@ -24,7 +24,7 @@ public class Bullet extends GameObject{
     }
     @Override
     public void create() {
-        
+        this.damage=10;
     }
 
     @Override
