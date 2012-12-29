@@ -39,15 +39,15 @@ public class Zombie extends Enemy{
             this.position.dX(-2);
             updateBoundingBox();
             if (level.collide(boundingBox)){
-            this.position.dX(2);
-        }
+                this.position.dX(2);
+            }
         }
         else if(this.position.getX()<player.position.getX()){
             this.position.dX(2);
             updateBoundingBox();
             if (level.collide(boundingBox)){
-            this.position.dX(-2);
-        }
+                this.position.dX(-2);
+            }
         }
         position.dY(1);
         updateBoundingBox();

@@ -51,7 +51,7 @@ public class GameLoop extends Game{
             o.update(level, player, objects);
             if(o instanceof Enemy){
                 Enemy e=(Enemy)o;
-                e.hit(objects, blood);
+                e.enemyUpdate(level,objects,blood);
             }
             if(o instanceof Bullet){
                 Bullet b=(Bullet)o;
