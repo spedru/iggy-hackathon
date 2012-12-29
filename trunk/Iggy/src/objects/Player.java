@@ -10,6 +10,7 @@ import Utilities.Vector2;
 import Utilities.ViewScreen;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import particlefx.ParticleManager;
 import world.Level;
 
 /**
@@ -25,10 +26,10 @@ public class Player extends GameObject{
     Animation head;
     boolean[] weapons;
     public Player(Vector2 pos){
-        super(new Animation("head",2,"png"),pos);
+        super(new Animation("leg",5,"png"),pos);
         gun=new Animation("shotgun_temp",2,"png");
         head=new Animation("head",2,"png");
-        currentweapon=2;
+        currentweapon=3;
         canshoot=0;
         weapons=new boolean[4];
         weapons[0]=true;
@@ -69,6 +70,13 @@ public class Player extends GameObject{
             jumps=Math.min(jumps, 1);
         }
         position.dY(-1);
+
+        if(velocity.getX()==0){
+            sprite.index=0;
+        }
+        else{
+            sprite.speed=(float) (velocity.getX() / 8);
+        }
     }
     public void jump(){
         if(canJump==true){
@@ -121,8 +129,9 @@ public class Player extends GameObject{
         position.dY(-16);
         head.draw(batch, position, 110);
         position.dY(16);
+        sprite.draw(batch, position, depth);
     }
-    public void shoot(LinkedList<GameObject> objects,Vector2 mouse,ViewScreen viewscreen){
+    public void shoot(LinkedList<GameObject> objects,Vector2 mouse,ViewScreen viewscreen,ParticleManager shells){
         if(canshoot==0){
             Vector2 m=mouse.clone();
             m.dX(-viewscreen.GetX());
@@ -137,15 +146,18 @@ public class Player extends GameObject{
                     break;
                 case PISTOL:
                     objects.add(new Bullet(pos,dir+offset()*.1,10));
+                    shells.addExplosion(position,1,3);
                     canshoot=20;
                     break;
                 case SHOTGUN:
                     canshoot=45;
+                    shells.addExplosion(position,1,3);
                     for(int i=0; i<6; i++){
                         objects.add(new Bullet(pos,dir+offset()*.3,10));
                     }
                     break;
                 case MACHINEGUN:
+                    shells.addExplosion(position,1,4);
                     objects.add(new Bullet(pos,dir+offset()*.1,10));
                     canshoot=7;
                     break;

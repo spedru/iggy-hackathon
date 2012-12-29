@@ -40,6 +40,7 @@ public class Animation{
         scaleY=1;
     }
     public Rect boundingBox(Vector2 position){
+        while(index<0)index+=frames.length;
         int x=(int)position.getX()-frames[(int)Math.floor(index)].getWidth()/2;
         int y=(int)position.getY()-frames[(int)Math.floor(index)].getHeight()/2;
         return new Rect(x,y,frames[(int)Math.floor(index)].getWidth(),
@@ -47,10 +48,13 @@ public class Animation{
     }
 
     public void update() {
+        while(index<0)index+=frames.length;
         index = (index + speed) % frames.length;
+
     }
 
     public void draw(ImageCollection batch, Vector2 position, int depth) {
+        while(index<0)index+=frames.length;
         int i=(int) Math.floor(index);
         batch.Draw(frames[i], position, direction,scaleX,scaleY,depth);
     }

@@ -89,7 +89,7 @@ public class Level {
     public int getCell(Vector2 Position){
         int x=(int)Math.floor(Position.getX()/size);
         int y=(int)Math.floor(Position.getY()/size);
-        return walls[x][y];
+        return getCell(x,y);
     }
     public int getCell(int x,int y){
         if(x<0||y<0||x>walls.length-1||y>walls[0].length-1){
