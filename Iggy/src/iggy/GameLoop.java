@@ -7,11 +7,13 @@ package iggy;
 
 import Game.Game;
 import Utilities.Vector2;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import objects.GameObject;
 import objects.Player;
+import particlefx.ParticleManager;
 import world.Level;
 
 /**
@@ -21,10 +23,12 @@ import world.Level;
 public class GameLoop extends Game{
     Level level;
     Player player;
+    ParticleManager shells;
     LinkedList<GameObject>objects;
     @Override
     public void InitializeAndLoad() {
         player=new Player(new Vector2());
+        shells=new ParticleManager(1000,100,0.5,0.1,.5,Color.DARK_GRAY);
         objects=new LinkedList<GameObject>();
         level=new Level("Levels/Level_Wasteland.txt",player,objects);
         
@@ -51,12 +55,13 @@ public class GameLoop extends Game{
             player.resetJump();
         }
         if(mouse.isPressed(mouse.LEFT_BUTTON)){
-            player.shoot(objects, mouse.location(), viewScreen);
+            player.shoot(objects, mouse.location(), viewScreen,shells);
         }
         player.rotateHead(mouse.location(),viewScreen);
         Vector2 vs=player.position.clone();
         vs.subtract(new Vector2(this.getWidth()/2,this.getHeight()/2));
         viewScreen.set(vs);
+        shells.update(level);
     }
 
     @Override
@@ -68,6 +73,7 @@ public class GameLoop extends Game{
             GameObject o=(GameObject)l.next();
             o.draw(batch);
         }
+        shells.draw(batch);
     }
 
     @Override
