@@ -1,0 +1,34 @@
+
+
+
+
+
+
+
+
+
+
+
+                     xxxxx                                                                                                                    -------x
+                     -----                                                                                                                    -------x
+                     xx-xx                                                                                                                    ------xx
+                     -----                                                                                                                    -------x
+                     -----                                                                                                                    -----x-x
+                     xx-xx                                                                                                                    -------x
+                     -----                                                                                             xxxxxx                 ----x--x
+                     -----                                                                                             ------                 -------x
+                     xx-xx                   xxxxxxx                                                                   xx--xx                 -----x-x
+                     -----                   -------                                                       1           ------                 -------x
+                     -----    xxxxxxxxxx     x-x-x-x                                    xxxxxxx         xxxxxxxxx      --xx--                 ------xx
+                     xx-xx    ----------     ---1---             1                      1------         ---------      ----1-     2           -------x
+                     -----    xxx----xxx     -x-x-x-        x-xxxxxx       xxxxxxx      x-x-x-x         xx-xxx-xx      xx--xx   xxxxxxx       -----x-x
+                     1----    -----1----     ----1--        --------       -------      -------         -------1-      ------   -------       -------x
+           xxxxxxxx  xx-xx    ---xxxx---     x-x-x-x        -x------       xx---xx      -x-x-x-         xxx-x-xxx      --xx--   xx---xx       ----x--x
+           --------  -----    --------1-     -------        --x-----       1------      ----1--         ----1----      -1----   -------       -------x
+           xx----xx  ---1-    xxx----xxx     xx---xx        ---x----       xx---xx      x-x-x-x         xx-xxx-xx      xx--xx   xx---xx       ---x---x
+           ----1---  xx-xx    ----------     ---1---        ----x---       -----1-      -------         ---------      ------   -------       -------x
+           ---xx---  -----    ---xxxx---     --xxx--        -----x--       xx---xx      -x-x-x-         xxx-x-xxx      --xx--   xx---xx       --x----x
+           1-------  1----    --------1-     -------        --------       -------      -------         ---------      ------   -------       -------x
+           xx----xx  xx-xx    xxx----xxx     xx---xx        x-xx-xxx       xx---xx      x-x-x-x         xx-xxx-xx      xx--xx   xx---xx       -x-----x
+      1    -------- 1----- 1  ----------   1 -------  1     --------  1    -------  1   -------   1 1   ---------   1  ------   -------    2  -------x
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
