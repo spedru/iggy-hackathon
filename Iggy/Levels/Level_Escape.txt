@@ -1,24 +1,39 @@
-111111111111111
-111111111111111
-111111111111111
-111111111111111
+ 111111111111111        1111111111111111111111111111111111111111111111111
+  11111111111111        1111111111111111111111111111111111111111111111111
+     11111111111        1111111111111111111111111111111111111111111111111
+          111111        1111111111111111111111111111111111111111111111111
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+x
 x
 xx
 xx@
 xxx
 xxx
 xxx
-xxxx
-xxxxx
-xxxxxxx                                                                           
-xxxxxxxx
-xxxxxxxxxx
-xxxxxxxxxxxx
-xxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxx
+xxxx  xx
+xxxxx   xx
+xxxxxxx   xx                                                                     
+xxxxxxx     xx
+xxxxxxxxxx    xx
+xxxxxxxxxxxxx    xxxxxxx
+xxxxxxxxxxxxxxxx        xxxx
+xxxxxxxxxxxxxxxxxxxxxxx     x
 xxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-
 xxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-
