@@ -159,7 +159,6 @@ public class Player extends GameObject {
                 canJump = false;
                 velocity.setY(-6);
                 jumps--;
-                System.out.println(jumps);
             }
         }
     }

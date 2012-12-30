@@ -84,12 +84,10 @@ public class Level {
                         case '2':
                             objects.add(new Zombie2(new Vector2(i*size+size/2+Math.random(),j*size+size/2)));
                             walls[i][j] = last;
-                            System.out.println("Zombie2");
                             break;
                         case '3':
                             objects.add(new FleshZombie(new Vector2(i*size+size/2+Math.random(),j*size+size/2)));
                             walls[i][j]=last;
-                            System.out.println("FleshZombie");
                             break;
                         case ' ':
                             walls[i][j] = 0;
