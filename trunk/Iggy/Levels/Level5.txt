@@ -13,14 +13,14 @@
                                                        xxx                             -
                                                         -                 3          xx-xx
               1                                       xx-xx               xx           -
-              xx                                       ---           xx-- -         xx---xx
+              xx                                     a ---           xx-- -         xx---xx
               -                      2               xx - xx            ---  xx        -
               - xx                  xx                -----           xx  ----     xx-----xx
            xx ---               xx  -               xx  -  xx          ---- xx         - 
-            ---                  ---    xx           -------             xx--    3    xxxxxxx
+            ---   a              ---    xx           -------             xx--    3    xxxxxxx
  xxx          ---xx           xx   -  xx-          xx-- - --xx            -  1   xxxxxxxxxxxx
-         xx-  -                --------               -----           2   xxxxxxxxxxxxxxxxxxx
+         xx-  -                --------               -----           2 a xxxxxxxxxxxxxxxxxxx
  @          ----- xx              xx                    -       1  xxxxxxxxxxxxxxxxxxxxxxxxxx
-xxxx      1   -                    -     1      2      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxx      1   -                    -     1  a   2      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxx -     1            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
