@@ -14,7 +14,7 @@ import world.Level;
  */
 public class Zombie2 extends Enemy{
     public Zombie2(Vector2 pos){
-        super(new Animation("fillerzombie", 1, "png"), pos);
+        super(new Animation("zamby", 7, "png"), pos);
         this.health=100;
         
     }
@@ -32,44 +32,30 @@ public class Zombie2 extends Enemy{
             position.subtract(velocity);
             velocity=new Vector2();
         }
-        if ((distanceToObject(player) < 450||health<80) && distanceToObject(player)>=100) {
+        if ((distanceToObject(player) < 450||health<80)) {
             if (this.position.getX() > player.position.getX()) {
                 this.position.dX(-4);
                 updateBoundingBox();
                 if (level.collide(boundingBox)) {
                     this.position.dX(4);
-                    velocity=new Vector2();
-                    this.position.dY(-2);
-                    updateBoundingBox();
-                    if (level.collide(boundingBox))this.position.dY(2);
+                    if(this.position.getY()>player.position.getY()){
+                        velocity=new Vector2();
+                        this.position.dY(-2);
+                        updateBoundingBox();
+                        if (level.collide(boundingBox))this.position.dY(2);
+                    }
                 }
             } else if (this.position.getX() < player.position.getX()) {
                 this.position.dX(4);
                 updateBoundingBox();
                 if (level.collide(boundingBox)) {
                     this.position.dX(-4);
-                    velocity=new Vector2();
-                    this.position.dY(-2);
-                    updateBoundingBox();
-                    if (level.collide(boundingBox))this.position.dY(2);
-                }
-            }
-        }
-        if(distanceToObject(player)<100){
-            if(this.position.getX()>player.position.getX()){
-                this.position.dX(-6);
-                updateBoundingBox();
-                if(level.collide(this.boundingBox)){
-                    this.position.dX(6);
-                    this.velocity.setY(-3);
-                }
-            }
-            else if(this.position.getX()<player.position.getX()){
-                this.position.dX(6);
-                updateBoundingBox();
-                if(level.collide(this.boundingBox)){
-                    this.position.dX(-6);
-                    this.velocity.setY(-3);
+                    if(this.position.getY()>player.position.getY()){
+                        velocity=new Vector2();
+                        this.position.dY(-2);
+                        updateBoundingBox();
+                        if (level.collide(boundingBox))this.position.dY(2);
+                    }
                 }
             }
         }

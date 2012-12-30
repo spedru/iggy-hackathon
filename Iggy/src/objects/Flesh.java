@@ -30,6 +30,15 @@ public class Flesh extends Enemy{
         if(this.boundingBox.intersects(player.boundingBox)){
             this.attack(player);
             objects.remove(this);
+            if (this.boundingBox.intersects(player.boundingBox)) {
+            player.health-=10+Math.random()*5;
+            if(this.position.getX()>player.position.getX()){
+                player.velocity=new Vector2(-5,-1);
+            }
+            else{
+                player.velocity=new Vector2(5,-1);
+            }
+        }
         }
     }
 }
