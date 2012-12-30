@@ -41,7 +41,7 @@ public class Zombie2 extends Enemy{
                 updateBoundingBox();
                 if (level.collide(boundingBox)) {
                     this.position.dX(4);
-                    if(this.position.getY()>player.position.getY()-16){
+                    if(this.position.getY()>player.position.getY()-3){
                         velocity=new Vector2();
                         this.position.dY(-2);
                         updateBoundingBox();
@@ -57,7 +57,7 @@ public class Zombie2 extends Enemy{
                 updateBoundingBox();
                 if (level.collide(boundingBox)) {
                     this.position.dX(-4);
-                    if(this.position.getY()>player.position.getY()-16){
+                    if(this.position.getY()>player.position.getY()-3){
                         velocity=new Vector2();
                         this.position.dY(-2);
                         updateBoundingBox();

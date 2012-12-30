@@ -17,8 +17,8 @@
 
   @                                                                                                                  3
 xxxxxx                                                                                                     1    xxxxxxx
-xxxxxxxxxxxx   1                                                                                      1   xxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxx  2    2                                    xxxxxx                     1   1 xxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx     1    2                       x-1---          2    2  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx        3         3x xax--x  3     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxx   1                                                                                      3   xxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxx       2                                    xxxxxx                         1 xxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx     1    2                       x-1---               2  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx        3         3x xax--x        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

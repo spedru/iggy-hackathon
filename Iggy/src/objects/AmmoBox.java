@@ -31,6 +31,6 @@ public class AmmoBox extends GameObject{
             alive=false;
         }
     }
-    public static final int[] amounts=new int[]{0,20,8,40,2};
+    public static final int[] amounts=new int[]{0,40,8,40,5};
     
 }
