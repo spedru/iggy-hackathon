@@ -49,7 +49,7 @@ public class GameLoop extends Game {
         level = new Level("Levels/Level_Forest.txt", player, objects);
         level.setColors(new Color(40, 20, 0), new Color(20, 10, 0), new Color(30, 15, 0));
         background1 = new StarBG();
-        this.setBackground(new Color(10, 20, 30));
+        this.setBackground(new Color(30, 10, 20));
         dvorak = false;
         state = GAME;
         canPause=true;
@@ -66,7 +66,7 @@ public class GameLoop extends Game {
         if (state == GAME) {
             try {
                 if(!bgm.playing()){
-                    bgm.loopSong("bgm.mid");
+                    bgm.loopSong("requiem.mid");
                 }
                 ListIterator l = objects.listIterator();
                 while (l.hasNext()) {

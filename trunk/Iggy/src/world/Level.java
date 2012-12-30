@@ -58,6 +58,7 @@ public class Level {
                             break;
                         case '@':
                             player.position=new Vector2(i*size+size/2,j*size+size/2);
+                            player.velocity=new Vector2();
                             walls[i][j] = last;       
                             break;
                         case '1':
@@ -134,7 +135,7 @@ public class Level {
     }
 
     public void draw(ImageCollection batch, ViewScreen viewscreen,Dimension d){
-        batch.fillRect(new Vector2(-viewscreen.GetX(),-viewscreen.GetY()*.9+d.height/2), d.width, d.height/2,side,2);
+        //batch.fillRect(new Vector2(-viewscreen.GetX(),-viewscreen.GetY()*.9+d.height/2+100), d.width, 1000,side,2);
         int x=(int) -Math.floor((double)viewscreen.GetX()/64);
         int y=(int) -Math.floor((double)viewscreen.GetY()/64);
         int w=(int) Math.ceil((double)d.width/64);
@@ -145,9 +146,11 @@ public class Level {
                 if(walls[i][j]==1){
                     if(i==0){
                         drawFront(batch,-1000,j*size,1000+size,size,viewscreen,d);
+                        drawCube(batch,-1000,j*size,1000+size,size,viewscreen,d);
                     }
                     if(i==walls.length-1){
                         drawFront(batch,i*size,j*size,1000,size,viewscreen,d);
+                        drawCube(batch,i*size,j*size,1000,size,viewscreen,d);
                     }
                     drawFront(batch,i*size,j*size,size,size,viewscreen,d);
                     if(!(walls[i-1][j]==1&&walls[i][j-1]==1&&walls[i+1][j]==1&&walls[i][j+1]==1)){
