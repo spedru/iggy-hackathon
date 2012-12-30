@@ -288,8 +288,8 @@ public class Player extends GameObject {
                         b.damage = 40;
                         objects.add(b);
                         canshoot = 60;
-                        gunSound = new SoundFile("Sounds/miss.wav", 1);
-                        gunSound.start();
+                        //gunSound = new SoundFile("Sounds/miss.wav", 1);
+                        //gunSound.start();
                         break;
                     case PISTOL:
                         b = new Bullet(pos, dir + offset() * .1, 20);
@@ -297,8 +297,8 @@ public class Player extends GameObject {
                         objects.add(b);
                         shells.addExplosion(gunpos, 1, 3);
                         canshoot = 20;
-                        gunSound = new SoundFile("Sounds/gun5.wav", 1);
-                        gunSound.start();
+                        //gunSound = new SoundFile("Sounds/gun5.wav", 1);
+                        //gunSound.start();
                         break;
                     case SHOTGUN:
                         canshoot = 45;
@@ -306,15 +306,15 @@ public class Player extends GameObject {
                         for (int i = 0; i < 6; i++) {
                             objects.add(new Bullet(pos, dir + offset() * .3, 20));
                         }
-                        gunSound = new SoundFile("Sounds/gun6.wav", 1);
-                        gunSound.start();
+                        //gunSound = new SoundFile("Sounds/gun6.wav", 1);
+                        //gunSound.start();
                         break;
                     case MACHINEGUN:
                         shells.addExplosion(gunpos, 1, 4);
                         objects.add(new Bullet(pos, dir + offset() * .1, 20));
                         canshoot = 7;
-                        gunSound = new SoundFile("Sounds/gun7.wav", 1);
-                        gunSound.start();
+                        //gunSound = new SoundFile("Sounds/gun7.wav", 1);
+                        //gunSound.start();
                         break;
                 }
             }
