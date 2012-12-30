@@ -11,7 +11,9 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.ListIterator;
+import objects.Animation;
 import objects.Bullet;
+import objects.Corpse;
 import objects.Enemy;
 import objects.GameObject;
 import objects.Player;
@@ -86,7 +88,14 @@ public class GameLoop extends Game {
                         b.checkWalls(level, debris);
                     }
                     if (!o.alive) {
+                        Corpse corpse=null;
+                        if(o instanceof Enemy){
+                            corpse=new Corpse(new Animation("dicks",1,"png"),o.position);
+                        }
                         l.remove();
+                        if(corpse!=null){
+                            l.add(corpse);
+                        }
                     }
                 }
                 player.update(level, player, objects);
@@ -158,7 +167,7 @@ public class GameLoop extends Game {
             if(cutscene.finished()){
                 state=GAME;
             }
-            if(keyboard.isKeyDown(KeyEvent.VK_ENTER)||mouse.isPressed(mouse.LEFT_BUTTON)){
+            if(keyboard.isKeyDown(KeyEvent.VK_ENTER)||keyboard.isKeyDown(KeyEvent.VK_SPACE)){
                 cutscene.advance();
             }
             else{
