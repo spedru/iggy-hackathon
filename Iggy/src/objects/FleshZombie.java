@@ -15,7 +15,7 @@ import world.Level;
 public class FleshZombie extends Enemy{
     private int t;
     public FleshZombie(Vector2 pos){
-        super(new Animation("fleshzombie", 1, "png"), pos);
+        super(new Animation("zambly", 7, "png"), pos);
         this.health=100;
         this.t=0;
     }
@@ -29,20 +29,29 @@ public class FleshZombie extends Enemy{
             this.position.subtract(this.velocity);
             this.velocity=new Vector2();
         }
-        if((distanceToObject(player) < 450||health<80)){
-            if(this.position.getX()>player.position.getX()){
+        if((distanceToObject(player) < 650||health<80)){
+            if(this.position.getX()>player.position.getX()+6){
                 this.position.dX(-2);
                 this.updateBoundingBox();
                 if(level.collide(this.boundingBox)){
                     this.position.dX(2);
                 }
+                if(sprite.sprite!="zambly"){
+                sprite=new Animation("zambly",7,"png");
+                }
             }
-            else if(this.position.getX()<player.position.getX()){
+            else if(this.position.getX()<player.position.getX()-6){
                 this.position.dX(2);
                 this.updateBoundingBox();
                 if(level.collide(this.boundingBox)){
                     this.position.dX(-2);
                 }
+                if(sprite.sprite!="zamblyflip"){
+                sprite=new Animation("zamblyflip",7,"png");
+                }
+            }
+            else{
+            sprite.index=0;
             }
             position.dY(1);
             updateBoundingBox();
