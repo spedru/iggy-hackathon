@@ -17,6 +17,7 @@ import objects.GameObject;
 import objects.Player;
 import particlefx.ParticleManager;
 import world.Level;
+import world.MIDIPlayer;
 import world.StarBG;
 
 /**
@@ -31,6 +32,7 @@ public class GameLoop extends Game {
     ParticleManager shells;
     ParticleManager debris;
     ParticleManager blood;
+    MIDIPlayer bgm;
     LinkedList<GameObject> objects;
     int state;
     boolean dvorak;
@@ -51,7 +53,7 @@ public class GameLoop extends Game {
         dvorak = false;
         state = GAME;
         canPause=true;
-
+        bgm=new MIDIPlayer();
     }
 
     @Override
@@ -63,6 +65,9 @@ public class GameLoop extends Game {
     public void Update() {
         if (state == GAME) {
             try {
+                if(!bgm.playing()){
+                    bgm.loopSong("bgm.mid");
+                }
                 ListIterator l = objects.listIterator();
                 while (l.hasNext()) {
                     GameObject o = (GameObject) l.next();
@@ -125,6 +130,9 @@ public class GameLoop extends Game {
                 canPause=false;
             }
             else canPause=true;
+        }
+        if(state==GAMEEND){
+            bgm.stopSong();
         }
     }
 
