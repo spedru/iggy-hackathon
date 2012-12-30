@@ -34,6 +34,7 @@ public class GameLoop extends Game {
     LinkedList<GameObject> objects;
     int state;
     boolean dvorak;
+    boolean canPause;
     int wheelRot;
 
     @Override
@@ -49,6 +50,7 @@ public class GameLoop extends Game {
         this.setBackground(new Color(10, 20, 30));
         dvorak = false;
         state = GAME;
+        canPause=true;
 
     }
 
@@ -95,6 +97,11 @@ public class GameLoop extends Game {
                 } else {
                     player.resetSwitch();
                 }
+                if(keyboard.isKeyDown('p')){
+                    if(canPause)state=PAUSED;
+                    canPause=false;
+                }
+                else canPause=true;
                 wheelRot = mouse.getWheelScroll();
                 if (mouse.isPressed(mouse.LEFT_BUTTON)) {
                     player.shoot(objects, mouse.location(), viewScreen, shells);
@@ -107,15 +114,23 @@ public class GameLoop extends Game {
                 shells.update(level);
                 debris.update(level);
                 blood.update(level);
+                level.resetMap();
             } catch (Exception e) {
                 //Well, fuck.
             }
+        }
+        if(state==PAUSED){
+            if(keyboard.isKeyDown('p')){
+                if(canPause)state=GAME;
+                canPause=false;
+            }
+            else canPause=true;
         }
     }
 
     @Override
     public void Draw(Graphics grphcs) {
-        if (state == GAME) {
+        if (state == GAME||state==PAUSED) {
             level.draw(batch, viewScreen, this.getSize());
             player.draw(batch);
             ListIterator l = objects.listIterator();
@@ -127,10 +142,13 @@ public class GameLoop extends Game {
             debris.draw(batch, viewScreen, this.getSize());
             blood.draw(batch, viewScreen, this.getSize());
             background1.draw(batch, viewScreen, this.getSize());
-            batch.fillRect(new Vector2(-viewScreen.GetX()+5, -viewScreen.GetY()+5), (int) player.health*2, 15, Color.RED, 200);
+            if(state==GAME)batch.fillRect(new Vector2(-viewScreen.GetX()+5, -viewScreen.GetY()+5), (int) player.health*2, 15, Color.RED, 200);
         }
         if(state==GAMEEND){
             batch.DrawString(new Vector2(-viewScreen.GetX()+20,-viewScreen.GetY()+20), "YOU LOSE", Color.red, 100);
+        }
+        if(state==PAUSED){
+            level.drawMiniMap(batch, player, viewScreen);
         }
     }
 
@@ -141,4 +159,5 @@ public class GameLoop extends Game {
     public static final int MENU = 0;
     public static final int GAME = 1;
     public static final int GAMEEND = 2;
+    public static final int PAUSED = 3;
 }
