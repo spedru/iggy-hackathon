@@ -50,7 +50,6 @@ public class GameLoop extends Game {
         blood = new ParticleManager(1000, 1600, 0.2, 0, 0, Color.RED);
         objects = new LinkedList<GameObject>();
         level = new Level("Levels/Level1.txt", player, objects);
-        level.setColors(new Color(40, 20, 0), new Color(20, 10, 0), new Color(30, 15, 0));
         currentLevel=1;
         background1 = new StarBG();
         this.setBackground(new Color(30, 10, 20));
@@ -58,6 +57,7 @@ public class GameLoop extends Game {
         state = CUTSCENE;
         canPause=true;
         bgm=new MIDIPlayer();
+        level.setColors(currentLevel);
         cutscene=new Cutscene(currentLevel);
     }
 
@@ -113,8 +113,12 @@ public class GameLoop extends Game {
                 if(keyboard.isKeyDown('4')&&player.weapons[3])player.currentweapon=3;
                 if(player.position.getX()>=level.width()-64){
                     objects=new LinkedList<GameObject>();
+                    shells.clearAll();
+                    debris.clearAll();
+                    blood.clearAll();
                     currentLevel++;
                     level=new Level("Levels/Level"+currentLevel+".txt", player, objects);
+                    level.setColors(currentLevel);
                     cutscene=new Cutscene(currentLevel);
                     state=CUTSCENE;
                 }

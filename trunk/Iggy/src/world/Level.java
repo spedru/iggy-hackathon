@@ -241,4 +241,21 @@ public class Level {
         side=Side;
         back=Back;
     }
+    public void setColors(int level){
+        try {
+            Scanner reader=new Scanner(new File("Colors/Color"+level+".txt"));
+            int[][] color=new int[3][3];
+            for(int i=0; i<3; i++){
+                reader.next();
+                color[i][0]=reader.nextInt();
+                color[i][1]=reader.nextInt();
+                color[i][2]=reader.nextInt();
+            }
+            front=new Color(color[0][0],color[0][1],color[0][2]);
+            side=new Color(color[1][0],color[1][1],color[1][2]);
+            back=new Color(color[2][0],color[2][1],color[2][2]);
+        } catch (FileNotFoundException ex) {
+            setColors(Color.BLACK,Color.GRAY,Color.LIGHT_GRAY);
+        }
+    }
 }
