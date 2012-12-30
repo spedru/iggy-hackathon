@@ -253,6 +253,15 @@ public class Level {
         side=Side;
         back=Back;
     }
+    public Color getFront(){
+        return front;
+    }
+    public Color getSide(){
+        return side;
+    }
+    public Color getBack(){
+        return back;
+    }
     public void setColors(int level){
         try {
             Scanner reader=new Scanner(new File("Colors/Color"+level+".txt"));
