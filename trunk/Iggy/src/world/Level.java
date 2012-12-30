@@ -65,6 +65,10 @@ public class Level {
                             objects.add(new Zombie(new Vector2(i*size+size/2+Math.random(),j*size+size/2)));
                             walls[i][j] = last;
                             break;
+                            case 'a':
+                            objects.add(new AmmoBox(new Vector2(i*size+size/2+Math.random(),j*size+size/2)));
+                            walls[i][j] = last;
+                            break;
                         case '2':
                             objects.add(new Zombie2(new Vector2(i*size+size/2+Math.random(),j*size+size/2)));
                             walls[i][j] = last;
@@ -168,6 +172,7 @@ public class Level {
         }
         //batch.fillRect(new Vector2(-1000,walls[0].length*size), walls.length*size+2000, 1000, Color.black, 100);
         drawCube(batch,-1000,walls[0].length*size,walls.length*size+2000,1000,viewscreen,d);
+        drawFront(batch,-1000,walls[0].length*size,walls.length*size+2000,1000,viewscreen,d);
     }
     public void drawMiniMap(ImageCollection batch,Player player,ViewScreen viewscreen){
         mapState++;

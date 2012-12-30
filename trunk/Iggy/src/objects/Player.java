@@ -23,7 +23,7 @@ public class Player extends GameObject {
     int jumps;
     int canshoot = 0;
     int firing = 2;
-    int currentweapon;
+    public int currentweapon;
     boolean canJump;
     boolean canSwitch;
     boolean facing;
@@ -38,8 +38,8 @@ public class Player extends GameObject {
     Animation left;
     Animation right;
     Vector2 gunpos;
-    boolean[] weapons;
-    int[] ammo;
+    public boolean[] weapons;
+    public int[] ammo;
     SoundFile gunSound;
 
     public Player(Vector2 pos) {
