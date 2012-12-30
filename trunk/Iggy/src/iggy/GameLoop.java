@@ -38,6 +38,7 @@ public class GameLoop extends Game {
     boolean dvorak;
     boolean canPause;
     int wheelRot;
+    int currentLevel;
 
     @Override
     public void InitializeAndLoad() {
@@ -48,6 +49,7 @@ public class GameLoop extends Game {
         objects = new LinkedList<GameObject>();
         level = new Level("Levels/Level_Forest.txt", player, objects);
         level.setColors(new Color(40, 20, 0), new Color(20, 10, 0), new Color(30, 15, 0));
+        currentLevel=1;
         background1 = new StarBG();
         this.setBackground(new Color(30, 10, 20));
         dvorak = false;
@@ -101,6 +103,10 @@ public class GameLoop extends Game {
 
                 } else {
                     player.resetSwitch();
+                }
+                if(player.position.getX()>=level.width()-64){
+                    currentLevel++;
+                    level=new Level("Levels/Level_City.txt", player, objects);
                 }
                 if(keyboard.isKeyDown('p')){
                     if(canPause)state=PAUSED;
