@@ -16,7 +16,7 @@ import world.Level;
  * @author Sam
  */
 public abstract class Enemy extends GameObject {
-
+    int cooldown;
     int health;
     boolean onGround;
 
@@ -24,11 +24,20 @@ public abstract class Enemy extends GameObject {
         super(a, pos);
         this.health = 100;
         this.onGround = false;
+        cooldown=0;
     }
 
-    public void attack(Player p) {
-        if (this.boundingBox.intersects(p.boundingBox)) {
-            //p.setSprite(new Animation("hittest",1, "png"));
+    public void attack(Player player) {
+        cooldown=Math.max(cooldown-1,0);
+        if (this.boundingBox.intersects(player.boundingBox)&&cooldown==0) {
+            player.health-=20+Math.random()*10;
+            cooldown+=30;
+            if(this.position.getX()>player.position.getX()){
+                player.velocity=new Vector2(-5,-1);
+            }
+            else{
+                player.velocity=new Vector2(5,-1);
+            }
         }
     }
 

@@ -18,6 +18,7 @@ import world.Level;
  * @author Peter
  */
 public class Player extends GameObject{
+    public double health;
     int jumps;
     int canshoot=0;
     int firing=2;
@@ -38,6 +39,7 @@ public class Player extends GameObject{
     boolean[] weapons;
     public Player(Vector2 pos){
         super(new Animation("legs",10,"png"),pos);
+        health=100;
         gunpos=pos.clone();
         shotgun=new Animation("shotgun_temp",2,"png");
         pistol=new Animation("pover",2,"png");
@@ -98,6 +100,7 @@ public class Player extends GameObject{
     }
     @Override
     public void step(Level level, Player player, LinkedList<GameObject> objects) {
+        health=Math.min(100,health+0.05);
         if(firing<10)firing++;
         canshoot=Math.max(0,canshoot-1);
         if(level.collide(boundingBox)){
@@ -247,7 +250,7 @@ public class Player extends GameObject{
                     b.type=-1;
                     b.damage=50;
                     objects.add(b);
-                    canshoot=20;
+                    canshoot=60;
                     break;
                 case PISTOL:
                     b=new Bullet(pos,dir+offset()*.1,20);
