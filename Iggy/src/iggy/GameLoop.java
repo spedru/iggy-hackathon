@@ -16,6 +16,7 @@ import objects.Enemy;
 import objects.GameObject;
 import objects.Player;
 import particlefx.ParticleManager;
+import world.Cutscene;
 import world.Level;
 import world.MIDIPlayer;
 import world.StarBG;
@@ -29,6 +30,7 @@ public class GameLoop extends Game {
     Level level;
     Player player;
     StarBG background1;
+    Cutscene cutscene;
     ParticleManager shells;
     ParticleManager debris;
     ParticleManager blood;
@@ -53,9 +55,10 @@ public class GameLoop extends Game {
         background1 = new StarBG();
         this.setBackground(new Color(30, 10, 20));
         dvorak = false;
-        state = GAME;
+        state = CUTSCENE;
         canPause=true;
         bgm=new MIDIPlayer();
+        cutscene=new Cutscene(currentLevel);
     }
 
     @Override
@@ -109,8 +112,11 @@ public class GameLoop extends Game {
                 if(keyboard.isKeyDown('3')&&player.weapons[2])player.currentweapon=2;
                 if(keyboard.isKeyDown('4')&&player.weapons[3])player.currentweapon=3;
                 if(player.position.getX()>=level.width()-64){
+                    objects=new LinkedList<GameObject>();
                     currentLevel++;
                     level=new Level("Levels/Level"+currentLevel+".txt", player, objects);
+                    cutscene=new Cutscene(currentLevel);
+                    state=CUTSCENE;
                 }
                 if(keyboard.isKeyDown('p')){
                     if(canPause)state=PAUSED;
@@ -144,11 +150,22 @@ public class GameLoop extends Game {
         if(state==GAMEEND){
             bgm.stopSong();
         }
+        if(state==CUTSCENE){
+            if(cutscene.finished()){
+                state=GAME;
+            }
+            if(keyboard.isKeyDown(KeyEvent.VK_ENTER)||mouse.isPressed(mouse.LEFT_BUTTON)){
+                cutscene.advance();
+            }
+            else{
+                cutscene.resetAdvance();
+            }
+        }
     }
 
     @Override
     public void Draw(Graphics grphcs) {
-        if (state == GAME||state==PAUSED) {
+        if (state == GAME||state==PAUSED||state==CUTSCENE) {
             level.draw(batch, viewScreen, this.getSize());
             player.draw(batch);
             Vector2 v=new Vector2(-viewScreen.GetX()+8,-viewScreen.GetY()+16);
@@ -174,6 +191,9 @@ public class GameLoop extends Game {
         if(state==PAUSED){
             level.drawMiniMap(batch, player, viewScreen);
         }
+        if(state==CUTSCENE){
+            cutscene.draw(batch, viewScreen,this.getSize());
+        }
     }
 
     @Override
@@ -184,4 +204,5 @@ public class GameLoop extends Game {
     public static final int GAME = 1;
     public static final int GAMEEND = 2;
     public static final int PAUSED = 3;
+    public static final int CUTSCENE=4;
 }
