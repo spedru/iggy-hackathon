@@ -1,24 +1,22 @@
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  @                                                                                                                  3
-xxxxxx   a                                                                                                  1    xxxxxx
-xxxxxxxxxxxx   1                                                                                      1   xxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxx  2  a  2                                                              1   1 xxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx     1    2                                       2    2  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx        3    a    3         3     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                   
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                   x
+                   x
+         - -       x
+    xxxxxxxxxx---xxxxxxx
+    x- -- -- -- x- -- --
+    xa1-- -- -s -- -- -xx
+    xxxx---xxxxxxxxxxxxxxx
+    x-1-x1-- -- -- -- --x
+    x- --x-- --xx- -- --x1
+    xxxxxxxxxxxxxxxx---xxx
+    x- -- -- -x -- -- xxx
+    x- -- -a --1-- --xxxx
+    x--xxxxxxxxxxxxxxxxxxx
+    xx -- -- -- -- -- --x
+    xxx--1--1-xx--1-- --x
+    xxxxxxxxxxxxxxx--xxxxx
+    x- -- -- -- -- -x -x
+ @  -- -- --1-- -- x-1-x   
+    --------------x-----
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

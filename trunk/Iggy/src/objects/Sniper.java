@@ -14,7 +14,7 @@ import world.Level;
  */
 public class Sniper extends GameObject{
     public Sniper(Vector2 pos){
-        super(new Animation("Ammo",1,"png"),pos);
+        super(new Animation("sniperrifle",1,"png"),pos);
     }
     @Override
     public void create() {

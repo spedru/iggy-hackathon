@@ -14,7 +14,7 @@ import world.Level;
  */
 public class Machinegun extends GameObject{
     public Machinegun(Vector2 pos){
-        super(new Animation("Ammo",1,"png"),pos);
+        super(new Animation("machinegun",1,"png"),pos);
     }
     @Override
     public void create() {
