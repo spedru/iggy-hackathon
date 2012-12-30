@@ -5,16 +5,16 @@
          - -       x
     xxxxxxxxxx---xxxxxxx
     x- -- -- -- x- -- --
-    xa1-- -- -s -- -- -xx
+    xa1-- -- -s -- 2- 1xx
     xxxx---xxxxxxxxxxxxxxx
     x-1-x1-- -- -- -- --x
-    x- --x-- --xx- -- --x1
+    x- --x-- 2-xx- -- --x1
     xxxxxxxxxxxxxxxx---xxx
     x- -- -- -x -- -- xxx
-    x- -- -a --1-- --xxxx
+    x- -- -a --1-- 3-xxxx
     x--xxxxxxxxxxxxxxxxxxx
     xx -- -- -- -- -- --x
-    xxx--1--1-xx--1-- --x
+    xxx--1--2-xx--1-- --x
     xxxxxxxxxxxxxxx--xxxxx
     x- -- -- -- -- -x -x
  @  -- -- --1-- -- x-1-x   

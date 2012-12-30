@@ -1,22 +1,22 @@
 
 
 
-                                        x                                           x
-                                       xxx                           xxxxx         xxx
-                                       xxxx                          ----x         xxxx
+                                        x              x                            x
+                                       xxx             x             xxxxx         xxx
+                                       xxxx            xx            ----x         xxxx
    @        xxxxx   1    3           2 xxxx           xxxx  1  xxxxxxx-maxx       2xxxx  3    3 3 3
 xxxxxxxx--xxxxxxxxxxxxxxxxxx---xxxxxxxxxxxxxx----xxxxxxxxxxxxxxxxxxxxxxxxxxx---xxxxxxxxxxxx---xxxxx
 xxxxxxxxx---xxxxxxxxxxxxxxx---xxxxxxxxxxxxxx----xxxxxxxxxxxxxxxxxxxxxxxxxx----xxxxxxxxxxxx---xxxxxx
 xxxxxxxxxx----xxxxxxxxxxxx---xxxxxxxxxxxx----xx----xxxxxxxxxxxxxxxxxxxxx-----xxxxxxxxxxxx---xxxxxxx
 xxxxxxxxx---x---xxxx---xx---xxxxxxxxxx----xxxxxxx--a---xxxxxxxxxxxxxxx----xxxxxxxxxxxxxx---xxxxxxxx
 xxxxxx-----xxxx------------xxxxxxxxxx---xxxxxxxxxxxxx------xxxxxxxxx---xx---xxxxxxxxxxx---xxxxxxxxx
-xxxxx---a-xxxxxxxxx--1---xxxxxxxxxx----xxxxxxxxxxxxxxxxxx--1---------xxxxxx--xxxxxxxxx---xxxxxxxxxx
+xxxxx-----xxxxxxxxx--1---xxxxxxxxxx----xxxxxxxxxxxxxxxxxx--1---x-----xxxxxx--xxxxxxxxx---xxxxxxxxxx
 xxxx---xx----xxxxxxxxxx------xxxxx----xxxxxxxxxxxxxxxxxxxxxxxxxx---xxxxxxxxx---xxxxxx---xxxxxxxxxxx
 xxx---xxxxxx----xxxxxxxxx-a---x------xxxxxxxxxxxxxxxxxxxxxxxxxx---xxxxxxxxxxx----xxx--a--xxxxxxxxxx
 xx---xxxxxxxxxx---xxxxxxxxxx--1-xxx----xxxxxxxxxxxxxxxxxxxxxxx--axxxxxxxxxxxxx-3-xx--2xx--xxxxxxxxx
 x---xxxxxxxxxxxxx----xxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxx---xxxxxxxxxxxxx---xx---xxx--xxxxxxxxx
 x---xxxxxxxxxxxxxxxx-----xxxxxxxxxxxx--xxxxxxxxxxxxxxxx---x----xxxxxxxxxxxx----xx---xxxxx--xxxxxxxx
-xx---xxxxxxxxxxxxxx-xxxx----xxxx----a--xxxxxxxxxxxxx------------xxxxxxxxxx---xxx---xxxxxx--xxxxxxxx
+xx---xxxxxxxxxxxxxx-xxxx----xxxx-------xxxxxxxxxxxxx------------xxxxxxxxxx---xxx---xxxxxx--xxxxxxxx
 xxx---xx--------------xxxx-------xxxxx-xxx---xxxxx-----1----x-----xxxxxxx---xxx---xxxxxxxx--xxxxxxx
 xxxx---x---------------x---xxxxxx---x---x--x--x-x----xxx--x--------xxx-----xxx---xxxxxxxxx--xxxxxxx
 xxxxx--------------------xxxxxxx--x----------------x---------------xx---xxxxx---xxxxxxxxxxx--xxxxxx

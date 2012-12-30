@@ -33,7 +33,7 @@ public class Animation{
                 frames[i] = new Image2D("Sprites/"+Name+"/"+Name+(i+1)+"."+Type);
             }
             index = 0;
-            speed = 1;
+            speed = (float).25;
         }
         direction=0;
         scaleX=1;
