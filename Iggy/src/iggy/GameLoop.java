@@ -38,12 +38,13 @@ public class GameLoop extends Game {
     ParticleManager blood;
     MIDIPlayer bgm;
     LinkedList<GameObject> objects;
+    Animation titleScreen;
     int state;
     boolean dvorak;
     boolean canPause;
     int wheelRot;
     int currentLevel;
-
+    int timer;
     @Override
     public void InitializeAndLoad() {
         player = new Player(new Vector2(32, 32));
@@ -56,11 +57,12 @@ public class GameLoop extends Game {
         background1 = new StarBG();
         this.setBackground(new Color(30, 10, 20));
         dvorak = false;
-        state = CUTSCENE;
+        state = MENU;
         canPause=true;
         bgm=new MIDIPlayer();
         level.setColors(currentLevel);
         cutscene=new Cutscene(currentLevel);
+        titleScreen=new Animation("zambly",7,"png");
     }
 
     @Override
@@ -72,6 +74,7 @@ public class GameLoop extends Game {
     public void Update() {
         if (state == GAME) {
             try {
+                timer=0;
                 if(!bgm.playing()){
                     bgm.loopSong("requiem.mid");
                 }
@@ -162,6 +165,9 @@ public class GameLoop extends Game {
         }
         if(state==GAMEEND){
             bgm.stopSong();
+            timer++;
+            if(timer>500)state=MENU;
+            
         }
         if(state==CUTSCENE){
             if(cutscene.finished()){
@@ -172,6 +178,26 @@ public class GameLoop extends Game {
             }
             else{
                 cutscene.resetAdvance();
+            }
+        }
+        if(state==MENU){
+            viewScreen.set(new Vector2());
+            titleScreen.update();
+            if(keyboard.isKeyDown(KeyEvent.VK_ENTER)||keyboard.isKeyDown(KeyEvent.VK_SPACE)){
+                player = new Player(new Vector2(32, 32));
+                shells = new ParticleManager(1000, 400, 0.2, 0.1, .5, Color.yellow);
+                debris = new ParticleManager(1000, 400, 0.2, 0.1, .5, Color.DARK_GRAY);
+                blood = new ParticleManager(1000, 1600, 0.2, 0, 0, Color.RED);
+                objects = new LinkedList<GameObject>();
+                level = new Level("Levels/Level1.txt", player, objects);
+                currentLevel=1;
+                background1 = new StarBG();
+                this.setBackground(new Color(30, 10, 20));
+                dvorak = false;
+                state = CUTSCENE;
+                canPause=true;
+                level.setColors(currentLevel);
+                cutscene=new Cutscene(currentLevel);
             }
         }
     }
@@ -206,6 +232,9 @@ public class GameLoop extends Game {
         }
         if(state==CUTSCENE){
             cutscene.draw(batch, viewScreen,this.getSize());
+        }
+        if(state==MENU){
+            titleScreen.draw(batch, new Vector2(this.getSize().width/2,this.getSize().height/2), 200);
         }
     }
 
