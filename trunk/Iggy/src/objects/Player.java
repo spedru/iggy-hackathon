@@ -218,7 +218,8 @@ public class Player extends GameObject{
         }
         switch (currentweapon){
             case SHOTGUN:
-                shotgun.draw(batch, position, 120);
+                shotgun.draw(batch, gunpos, 120);
+                pistolarm.draw(batch, gunpos, 98);
                 break;
             case PISTOL:
                 pistol.draw(batch, gunpos, 120);
