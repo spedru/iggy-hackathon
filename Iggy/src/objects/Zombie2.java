@@ -35,6 +35,9 @@ public class Zombie2 extends Enemy{
         if ((distanceToObject(player) < 450||health<80)) {
             if (this.position.getX() > player.position.getX()) {
                 this.position.dX(-4);
+                if(sprite.sprite!="zambyflip"){
+                sprite=new Animation("zambyflip",7,"png");
+                }
                 updateBoundingBox();
                 if (level.collide(boundingBox)) {
                     this.position.dX(4);
@@ -43,10 +46,14 @@ public class Zombie2 extends Enemy{
                         this.position.dY(-2);
                         updateBoundingBox();
                         if (level.collide(boundingBox))this.position.dY(2);
+                        
                     }
                 }
             } else if (this.position.getX() < player.position.getX()) {
                 this.position.dX(4);
+                if(sprite.sprite!="zamby"){
+                sprite=new Animation("zamby",7,"png");
+                }
                 updateBoundingBox();
                 if (level.collide(boundingBox)) {
                     this.position.dX(-4);

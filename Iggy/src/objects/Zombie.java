@@ -41,13 +41,22 @@ public class Zombie extends Enemy{
                 if (level.collide(boundingBox)) {
                     this.position.dX(2);
                 }
+                if(sprite.sprite!="zambyflip"){
+                sprite=new Animation("zambyflip",7,"png");
+                }
             } else if (this.position.getX() < player.position.getX()) {
                 this.position.dX(2);
                 updateBoundingBox();
                 if (level.collide(boundingBox)) {
                     this.position.dX(-2);
                 }
+                if(sprite.sprite!="zamby"){
+                sprite=new Animation("zamby",7,"png");
+                }
             }
+        }
+        else{
+            sprite.index=0;
         }
         position.dY(1);
         updateBoundingBox();

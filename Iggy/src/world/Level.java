@@ -24,12 +24,14 @@ import objects.*;
  */
 public class Level {
     int[][] walls;
+    int mapState;
     final int size=64;
     Color front;
     Color side;
     Color back;
     public Level(String level,Player player,LinkedList<GameObject>objects){
         try {
+            mapState=0;
             front=Color.BLACK;
             side=Color.GRAY;
             back=Color.LIGHT_GRAY;
@@ -59,16 +61,16 @@ public class Level {
                             walls[i][j] = last;       
                             break;
                         case '1':
-                            objects.add(new Zombie(new Vector2(i*size+size/2,j*size+size/2)));
+                            objects.add(new Zombie(new Vector2(i*size+size/2+Math.random(),j*size+size/2)));
                             walls[i][j] = last;
                             break;
                         case '2':
-                            objects.add(new Zombie2(new Vector2(i*size+size/2,j*size+size/2)));
+                            objects.add(new Zombie2(new Vector2(i*size+size/2+Math.random(),j*size+size/2)));
                             walls[i][j] = last;
                             System.out.println("Zombie2");
                             break;
                         case '3':
-                            objects.add(new FleshZombie(new Vector2(i*size+size/2,j*size+size/2)));
+                            objects.add(new FleshZombie(new Vector2(i*size+size/2+Math.random(),j*size+size/2)));
                             walls[i][j]=last;
                             System.out.println("FleshZombie");
                             break;
@@ -163,6 +165,28 @@ public class Level {
         }
         //batch.fillRect(new Vector2(-1000,walls[0].length*size), walls.length*size+2000, 1000, Color.black, 100);
         drawCube(batch,-1000,walls[0].length*size,walls.length*size+2000,1000,viewscreen,d);
+    }
+    public void drawMiniMap(ImageCollection batch,Player player,ViewScreen viewscreen){
+        mapState++;
+        batch.fillRect(new Vector2(-viewscreen.GetX()+Math.floor(player.position.getX()/size)*3,
+                -viewscreen.GetY()+Math.floor(player.position.getY()/size)*3),
+                 3, 3, Color.GREEN, 155);
+        for(int i=0; i<walls.length; i++){
+            for(int j=0; j<Math.min(walls[0].length,mapState); j++){
+                if(walls[i][j]==1){
+                    batch.fillRect(new Vector2(-viewscreen.GetX()+i*3,-viewscreen.GetY()+j*3), 3, 3, Color.BLACK, 150);
+                }
+                if(walls[i][j]==-1){
+                    batch.fillRect(new Vector2(-viewscreen.GetX()+i*3,-viewscreen.GetY()+j*3), 3, 3, Color.GRAY, 150);
+                }
+                if(walls[i][j]==0){
+                    batch.fillRect(new Vector2(-viewscreen.GetX()+i*3,-viewscreen.GetY()+j*3), 3, 3, Color.WHITE, 150);
+                }
+            }
+        }
+    }
+    public void resetMap(){
+        mapState=0;
     }
     public void drawCube(ImageCollection batch,double X, double Y, double W, double H,ViewScreen vs,Dimension d){
         double depth=1.03;
