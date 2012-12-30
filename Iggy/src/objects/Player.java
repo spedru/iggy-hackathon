@@ -22,7 +22,7 @@ public class Player extends GameObject {
     public double health;
     int jumps;
     int canshoot = 0;
-    int firing = 2;
+    int firing = 1;
     public int currentweapon;
     boolean canJump;
     boolean canSwitch;
@@ -32,6 +32,7 @@ public class Player extends GameObject {
     Animation knuck;
     Animation knack;
     Animation shotgun;
+    Animation sniper;
     Animation ak;
     Animation head;
     Animation muzzleflare;
@@ -48,6 +49,7 @@ public class Player extends GameObject {
         gunpos = pos.clone();
         shotgun = new Animation("shotgun_temp", 2, "png");
         ak = new Animation("assaultrifle", 2, "png");
+        sniper = new Animation("sniper", 2, "png");
         pistol = new Animation("pover", 2, "png");
         pistolarm = new Animation("punder", 2, "png");
         knuck = new Animation("knuck", 4, "png");
@@ -58,8 +60,8 @@ public class Player extends GameObject {
         left = new Animation("lag", 10, "png");
         currentweapon = 2;
         canshoot = 0;
-        weapons = new boolean[]{true,true,true,true};
-        ammo = new int[]{1,40,8,40};
+        weapons = new boolean[]{true,true,true,true,true};
+        ammo = new int[]{1,40,8,40,5};
         facing = true;
 
     }
@@ -175,6 +177,7 @@ public class Player extends GameObject {
         if (m.getX() > 0) {
             ak.index = 0;
             shotgun.index = 0;
+            sniper.index = 0;
             pistol.index = 0;
             pistolarm.index = 0;
             head.index = 0;
@@ -183,6 +186,7 @@ public class Player extends GameObject {
         } else {
             ak.index = 1;
             shotgun.index = 1;
+            sniper.index=1;
             pistol.index = 1;
             pistolarm.index = 1;
             head.index = 1;
@@ -195,6 +199,7 @@ public class Player extends GameObject {
         pistol.rotate(dir);
         pistolarm.rotate(dir);
         shotgun.rotate(dir);
+        sniper.rotate(dir);
         ak.rotate(dir);
         knuck.rotate(dir);
         if (firing == 0) {
@@ -243,6 +248,11 @@ public class Player extends GameObject {
                 case MACHINEGUN:
                     ak.draw(batch, gunpos, 120);
                     pistolarm.draw(batch, gunpos, 98);
+                    break;
+                case SNIPER:
+                    sniper.draw(batch, gunpos, 120);
+                    pistolarm.draw(batch, gunpos, 98);
+                    break;
             }
         }
         position.dY(-12);
@@ -318,6 +328,19 @@ public class Player extends GameObject {
                         //gunSound = new SoundFile("Sounds/gun7.wav", 1);
                         //gunSound.start();
                         break;
+                    case SNIPER:
+                        b = new Bullet(pos, dir + offset() * .1, 30);
+                        b.damage = 25;
+                        objects.add(b);
+                        b = new Bullet(gunpos, dir + offset() * .1, 30);
+                        b.damage = 25;
+                        b.type=1;
+                        objects.add(b);
+                        shells.addExplosion(gunpos, 1, 3);
+                        canshoot = 40;
+                        //gunSound = new SoundFile("Sounds/gun5.wav", 1);
+                        //gunSound.start();
+                        break;
                 }
             }
         }
@@ -330,5 +353,6 @@ public class Player extends GameObject {
     public static final int PISTOL = 1;
     public static final int SHOTGUN = 2;
     public static final int MACHINEGUN = 3;
-    public static final String[] WEAPONS={"Brass Knuckles","Pistol","Shotgun","Assault Rifle"};
+    public static final int SNIPER = 4;
+    public static final String[] WEAPONS={"Brass Knuckles","Pistol","Shotgun","Assault Rifle","Sniper Rifle"};
 }

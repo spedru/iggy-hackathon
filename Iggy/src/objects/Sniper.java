@@ -12,8 +12,8 @@ import world.Level;
  *
  * @author Peter
  */
-public class AmmoBox extends GameObject{
-    public AmmoBox(Vector2 pos){
+public class Sniper extends GameObject{
+    public Sniper(Vector2 pos){
         super(new Animation("Ammo",1,"png"),pos);
     }
     @Override
@@ -23,14 +23,10 @@ public class AmmoBox extends GameObject{
     @Override
     public void step(Level level, Player player, LinkedList<GameObject> objects) {
         if(boundingBox.intersects(player.boundingBox)&&alive){
-            for(int i=0; i<player.weapons.length; i++){
-                if(player.weapons[i]){
-                    player.ammo[i]+=amounts[i];
-                }
-            }
-            alive=false;
+            player.weapons[4]=true;
+            player.currentweapon=4;
+            player.ammo[4]+=5;
+            this.alive=false;
         }
-    }
-    public static final int[] amounts=new int[]{0,20,8,40,2};
-    
+    } 
 }
