@@ -1,0 +1,3 @@
+Press [enter] to advance
+You are now on the rooftops.
+Don't fall down.
