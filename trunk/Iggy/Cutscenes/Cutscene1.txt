@@ -5,3 +5,4 @@ However, there's some stuff he left back at his place on the other side of downt
 It'll be tricky getting there, he thought, but he was aching for a bit of adventure.
 Aiming his 9mm Glock and trusty pair of brass knuckles with the mouse,
 he prepared himself to use the [W][A][S][D] keys to get back to the City...
+(also, [q][e] switches weapons)

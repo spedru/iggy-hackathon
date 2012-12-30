@@ -62,7 +62,7 @@ public class GameLoop extends Game {
         bgm=new MIDIPlayer();
         level.setColors(currentLevel);
         cutscene=new Cutscene(currentLevel);
-        titleScreen=new Animation("zambly",7,"png");
+        titleScreen=new Animation("title",1,"png");
     }
 
     @Override
@@ -123,6 +123,7 @@ public class GameLoop extends Game {
                 if(keyboard.isKeyDown('2')&&player.weapons[1])player.currentweapon=1;
                 if(keyboard.isKeyDown('3')&&player.weapons[2])player.currentweapon=2;
                 if(keyboard.isKeyDown('4')&&player.weapons[3])player.currentweapon=3;
+                if(keyboard.isKeyDown('5')&&player.weapons[4])player.currentweapon=4;
                 if(player.position.getX()>=level.width()-64){
                     objects=new LinkedList<GameObject>();
                     shells.clearAll();
@@ -231,7 +232,7 @@ public class GameLoop extends Game {
             level.drawMiniMap(batch, player, viewScreen);
         }
         if(state==CUTSCENE){
-            cutscene.draw(batch, viewScreen,this.getSize());
+            cutscene.draw(batch, viewScreen,this.getSize(),level);
         }
         if(state==MENU){
             titleScreen.draw(batch, new Vector2(this.getSize().width/2,this.getSize().height/2), 200);
