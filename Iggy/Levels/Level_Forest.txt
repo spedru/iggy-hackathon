@@ -8,19 +8,19 @@
 
 
 
-
-                                                                                      xxx
+                                                                                       3
+                                                        2                             xxx
                                                        xxx                             -
-                                                        -                            xx-xx
-                                                      xx-xx               xx           -
+                                                        -                 3          xx-xx
+              1                                       xx-xx               xx           -
               xx                                       ---           xx-- -         xx---xx
-              -                                      xx - xx            ---  xx        -
+              -                      2               xx - xx            ---  xx        -
               - xx                  xx                -----           xx  ----     xx-----xx
            xx ---               xx  -               xx  -  xx          ---- xx         - 
-            ---                  ---    xx           -------             xx--         xxxxxxx
- xxx          ---xx           xx   -  xx-          xx-- - --xx            -      xxxxxxxxxxxx
-         xx-  -                --------               -----               xxxxxxxxxxxxxxxxxx
-            ----- xx              xx                    -          xxxxxxxxxxxxxxxxxxxxxxxxxx
-xxxx          -                    -                   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxx -                  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            ---                  ---    xx           -------             xx--    3    xxxxxxx
+ xxx          ---xx           xx   -  xx-          xx-- - --xx            -  1   xxxxxxxxxxxx
+         xx-  -                --------               -----           2   xxxxxxxxxxxxxxxxxx
+            ----- xx              xx                    -       1  xxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxx      1   -                    -     1      2      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxx -     1            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
