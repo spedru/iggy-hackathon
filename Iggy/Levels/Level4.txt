@@ -5,12 +5,22 @@
 
 
 
-                                                                                            3
-                                                             a       2             xx      xx
-             1        2       1                      xx      xx      xx           ----    ----
-     xx      xx      xx      xx      xx             ----    ----    ----         ---1--  ------
-    ----    ----    ----    ----    ----           -1----  --1---  ------        xxxxxx  xxxxxx
-   ------  --2-a-  --2---  ------  ---1--          xxxxxx  xxxxxx  xxxxxx      3 ------  ------  3
-   xxxxxx  xxxxxx  xxxxxx  xxxxxx  xxxxxx          ---1--  ------ 2------2    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- @ ------  ----1-  ------  ---1--  ------   2   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+
+
+
+                                                                                       3
+                                                        2                             xxx
+                                                       xxx                             -
+                                                        -                 3          xx-xx
+              1                                       xx-xx               xx           -
+              xx                                     a ---           xx-- -         xx---xx
+              -                      2               xx - xx            ---  xx        -
+              - xx                  xx                -----           xx  ----     xx-----xx
+           xx ---               xx  -               xx  -  xx          ---- xx         - 
+            ---   a              ---    xx           -------             xx--    3    xxxxxxx
+ xxx          ---xx           xx   -  xx-          xx-- - --xx            -  1   xxxxxxxxxxxx
+         xx-  -                --------               -----           2 a xxxxxxxxxxxxxxxxxxx
+ @          ----- xx              xx                    - x     1  xxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxx      1   -                    -     1  a   2      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxx -     1            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

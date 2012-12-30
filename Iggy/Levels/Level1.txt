@@ -1,21 +1,26 @@
 
+                                                                                        
+                                                                                        
+                                                                                        
+                                                                                        
+                                                                                        
+                                                                                        
+                                                                                        
+                                                                                         
+                                                                                        
+                                                                                        
+                                                                                        
+                                                                                        
+                                                                                        
+                                                                                        
+                                                                                        
+                                                                                        
+                                                                                                                                                                               x
+                                                                                         
+                                                                                         
 
-                   x
-                   x
-         - -       x
-    xxxxxxxxxx---xxxxxxx
-    x- -- -- -s x- -- -x
-    xa1-- -- -- -- --@-xx
-    xxxx---xxxxxxxxxxxxxxx
-    x-1-x1-- -- -- -- -- 
-    x- --x-- --xx- -- --x1
-    xxxxxxxxxxxxxxxx---xxx
-    x- -- -- -x -- -- xx
-    x- -- -a --1-- --xxxx
-    x--xxxxxxxxxxxxxxxxxxx
-    xx -- -- -- -- -- --
-    xxx--1--1-xx--1-- --x
-    xxxxxxxxxxxxxxx--xxxxx
-    -- -- -- -- -- -x -x
-    -- -- --1-- -- x-1-x   x
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+    xxxxxxx                  
+    x-----x              xxxxxx 1   2
+xx  x-@----        xxxxxxxxxxxxxxxxxxxxxx        2    1      1      2   xxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

@@ -58,10 +58,10 @@ public class Player extends GameObject {
         muzzleflare = new Animation("muzzleflare", 2, "png");
         right = new Animation("legs", 10, "png");
         left = new Animation("lag", 10, "png");
-        currentweapon = 2;
+        currentweapon = 1;
         canshoot = 0;
-        weapons = new boolean[]{true,true,true,true,true};
-        ammo = new int[]{1,40,8,40,5};
+        weapons = new boolean[]{true,true,false,false,false};
+        ammo = new int[]{1,40,0,0,0};
         facing = true;
 
     }
@@ -324,16 +324,16 @@ public class Player extends GameObject {
                         b.damage=13;
                         shells.addExplosion(gunpos, 1, 4);
                         objects.add(b);
-                        canshoot = 5;
+                        canshoot = 7;
                         //gunSound = new SoundFile("Sounds/gun7.wav", 1);
                         //gunSound.start();
                         break;
                     case SNIPER:
-                        b = new Bullet(pos, dir + offset() * .1, 30);
-                        b.damage = 25;
+                        b = new Bullet(pos, dir + offset() * .1, 40);
+                        b.damage = 40;
                         objects.add(b);
-                        b = new Bullet(gunpos, dir + offset() * .1, 30);
-                        b.damage = 25;
+                        b = new Bullet(gunpos, dir + offset() * .1, 40);
+                        b.damage = 40;
                         b.type=1;
                         objects.add(b);
                         shells.addExplosion(gunpos, 1, 3);

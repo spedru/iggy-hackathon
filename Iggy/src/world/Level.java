@@ -65,8 +65,20 @@ public class Level {
                             objects.add(new Zombie(new Vector2(i*size+size/2+Math.random(),j*size+size/2)));
                             walls[i][j] = last;
                             break;
-                            case 'a':
+                        case 'a':
                             objects.add(new AmmoBox(new Vector2(i*size+size/2+Math.random(),j*size+size/2)));
+                            walls[i][j] = last;
+                            break;
+                        case 's':
+                            objects.add(new Shotgun(new Vector2(i*size+size/2+Math.random(),j*size+size/2)));
+                            walls[i][j] = last;
+                            break;
+                        case 'm':
+                            objects.add(new Machinegun(new Vector2(i*size+size/2+Math.random(),j*size+size/2)));
+                            walls[i][j] = last;
+                            break;
+                        case 'r':
+                            objects.add(new Sniper(new Vector2(i*size+size/2+Math.random(),j*size+size/2)));
                             walls[i][j] = last;
                             break;
                         case '2':
