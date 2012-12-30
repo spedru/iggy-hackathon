@@ -35,6 +35,9 @@ public class ParticleManager {
         color=Color;
         bounce=Bounce;
     }
+    public void clearAll(){
+        particles=new LinkedList<Particle>();
+    }
     public void update(Level level){
         ListIterator l=particles.listIterator();
         while(l.hasNext()){

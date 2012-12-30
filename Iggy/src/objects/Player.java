@@ -310,9 +310,11 @@ public class Player extends GameObject {
                         //gunSound.start();
                         break;
                     case MACHINEGUN:
+                        b=new Bullet(pos, dir + offset() * .1, 20);
+                        b.damage=13;
                         shells.addExplosion(gunpos, 1, 4);
-                        objects.add(new Bullet(pos, dir + offset() * .1, 20));
-                        canshoot = 7;
+                        objects.add(b);
+                        canshoot = 5;
                         //gunSound = new SoundFile("Sounds/gun7.wav", 1);
                         //gunSound.start();
                         break;
