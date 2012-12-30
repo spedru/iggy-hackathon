@@ -46,7 +46,7 @@ public class GameLoop extends Game {
         debris = new ParticleManager(1000, 400, 0.2, 0.1, .5, Color.DARK_GRAY);
         blood = new ParticleManager(1000, 1600, 0.2, 0, 0, Color.RED);
         objects = new LinkedList<GameObject>();
-        level = new Level("Levels/Level_Caves.txt", player, objects);
+        level = new Level("Levels/Level_Forest.txt", player, objects);
         level.setColors(new Color(40, 20, 0), new Color(20, 10, 0), new Color(30, 15, 0));
         background1 = new StarBG();
         this.setBackground(new Color(10, 20, 30));
@@ -141,6 +141,12 @@ public class GameLoop extends Game {
         if (state == GAME||state==PAUSED) {
             level.draw(batch, viewScreen, this.getSize());
             player.draw(batch);
+            Vector2 v=new Vector2(-viewScreen.GetX()+8,-viewScreen.GetY()+16);
+            batch.DrawString(v,"Health: "+Math.round(player.health), Color.white, 250);
+            v.dY(16);
+            batch.DrawString(v, player.getWeapon(), Color.white, 250);
+            v.dY(16);
+            batch.DrawString(v,"Ammo: "+player.currentAmmo(), Color.white, 250);
             ListIterator l = objects.listIterator();
             while (l.hasNext()) {
                 GameObject o = (GameObject) l.next();
