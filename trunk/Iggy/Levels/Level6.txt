@@ -1,0 +1,24 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  @                                                                                                                  3
+xxxxxx                                                                                                      1    xxxxxx
+xxxxxxxxxxxx   1                                                                                      1   xxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxx  2     2                                                              1   1 xxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx     1    2                                       2    2  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx        3         3         3     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                   
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
