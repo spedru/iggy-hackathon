@@ -47,7 +47,7 @@ public class GameLoop extends Game {
         debris = new ParticleManager(1000, 400, 0.2, 0.1, .5, Color.DARK_GRAY);
         blood = new ParticleManager(1000, 1600, 0.2, 0, 0, Color.RED);
         objects = new LinkedList<GameObject>();
-        level = new Level("Levels/Level_Forest.txt", player, objects);
+        level = new Level("Levels/Level1.txt", player, objects);
         level.setColors(new Color(40, 20, 0), new Color(20, 10, 0), new Color(30, 15, 0));
         currentLevel=1;
         background1 = new StarBG();
@@ -104,9 +104,13 @@ public class GameLoop extends Game {
                 } else {
                     player.resetSwitch();
                 }
+                if(keyboard.isKeyDown('1')&&player.weapons[0])player.currentweapon=0;
+                if(keyboard.isKeyDown('2')&&player.weapons[1])player.currentweapon=1;
+                if(keyboard.isKeyDown('3')&&player.weapons[2])player.currentweapon=2;
+                if(keyboard.isKeyDown('4')&&player.weapons[3])player.currentweapon=3;
                 if(player.position.getX()>=level.width()-64){
                     currentLevel++;
-                    level=new Level("Levels/Level_City.txt", player, objects);
+                    level=new Level("Levels/Level"+currentLevel+".txt", player, objects);
                 }
                 if(keyboard.isKeyDown('p')){
                     if(canPause)state=PAUSED;
