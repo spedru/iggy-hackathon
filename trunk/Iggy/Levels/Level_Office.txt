@@ -2,40 +2,40 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
 
-
+  3         3         3         3
 xxxxx     xxxxx     xxxxx     xxxxx
 
 
 xxxxx     xxxxx     xxxxx     xxxxx
 
+2
+xxxxx     xxxxx     xxxxx     xxxxx
 
+                      1       2
+xxxxx     xxxxx     xxxxx     xxxxx
+
+            2                   1
 xxxxx     xxxxx     xxxxx     xxxxx
 
 
 xxxxx     xxxxx     xxxxx     xxxxx
 
-
+                      3
 xxxxx     xxxxx     xxxxx     xxxxx
 
-
+ 2                    1       2
 xxxxx     xxxxx     xxxxx     xxxxx
 
-
+            2
 xxxxx     xxxxx     xxxxx     xxxxx
 
-
+ @         1
 xxxxx     xxxxx     xxxxx     xxxxx
 
-
+                      2
 xxxxx     xxxxx     xxxxx     xxxxx
 
- @
+   1                              
 xxxxx     xxxxx     xxxxx     xxxxx
-
-
-xxxxx     xxxxx     xxxxx     xxxxx
-
-
-xxxxx     xxxxx     xxxxx     xxxxx
-
+1     1    1     1   1    1     1 
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
